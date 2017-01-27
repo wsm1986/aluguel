@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Inquilino;
-import com.twilio.Twilio;
-import com.twilio.http.TwilioRestClient;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 @Controller
 @RequestMapping("/inquilino")
@@ -19,11 +15,6 @@ public class InquilinoController {
 	  public static final String ACCOUNT_SID = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 	  public static final String AUTH_TOKEN = "your_auth_token";
 	  
-public static void main(String[] args) {
-
-
-
-}
 	@RequestMapping("/form")
 	private ModelAndView cadastro() {
 		ModelAndView mvn = new ModelAndView("cadastroInquilino");
