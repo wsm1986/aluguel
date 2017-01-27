@@ -1,5 +1,8 @@
 package com.aluguel.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,13 +13,13 @@ import com.aluguel.models.Inquilino;
 public class InquilinoController {
 
 	@RequestMapping("/")
-	private ModelAndView home(){
+	private ModelAndView home() {
 		ModelAndView mvn = new ModelAndView("index");
 		return mvn;
 	}
-	
+
 	@RequestMapping("/cadastro")
-	private ModelAndView cadastro(){
+	private ModelAndView cadastro() {
 		ModelAndView mvn = new ModelAndView("cadastroInquilino");
 		Inquilino teste = new Inquilino();
 		teste.setNome("wellington");
@@ -24,13 +27,30 @@ public class InquilinoController {
 		teste.setDtFinalContrato("01/01/2018");
 		teste.setDtInicioContrato("01/01/2015");
 		mvn.addObject("inquilino", teste);
-		
+
+		return mvn;
+	}
+
+	@RequestMapping("/lista")
+	private ModelAndView lista() {
+		ModelAndView mvn = new ModelAndView("listaInquilino");
+		List<Inquilino> lista = new ArrayList<Inquilino>();
+		for (int i = 0; i < 20; i++) {
+			Inquilino inquilino = new Inquilino();
+			inquilino.setNome("wellington" + i );
+			inquilino.setNumeroCasa("1" + i);
+			inquilino.setDtFinalContrato("01/01/2018");
+			inquilino.setDtInicioContrato("01/01/2015");
+			lista.add(inquilino);
+		}
+		mvn.addObject("listaInquilino", lista);
 		return mvn;
 	}
 	
-	@RequestMapping("/lista")
-	private ModelAndView lista(){
+	@RequestMapping("/data2")
+	private ModelAndView getData() {
 		ModelAndView mvn = new ModelAndView("listaInquilino");
+		System.out.println("vvfd");
 		return mvn;
 	}
 }
