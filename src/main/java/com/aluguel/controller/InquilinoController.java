@@ -10,15 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aluguel.models.Inquilino;
 
 @Controller
+@RequestMapping("/inquilino")
 public class InquilinoController {
 
-	@RequestMapping("/")
-	private ModelAndView home() {
-		ModelAndView mvn = new ModelAndView("index");
-		return mvn;
-	}
 
-	@RequestMapping("/cadastro")
+	@RequestMapping("/form")
 	private ModelAndView cadastro() {
 		ModelAndView mvn = new ModelAndView("cadastroInquilino");
 		Inquilino teste = new Inquilino();
@@ -37,7 +33,7 @@ public class InquilinoController {
 		List<Inquilino> lista = new ArrayList<Inquilino>();
 		for (int i = 0; i < 20; i++) {
 			Inquilino inquilino = new Inquilino();
-			inquilino.setNome("wellington" + i );
+			inquilino.setNome("wellington moreira" + i );
 			inquilino.setNumeroCasa("1" + i);
 			inquilino.setDtFinalContrato("01/01/2018");
 			inquilino.setDtInicioContrato("01/01/2015");
