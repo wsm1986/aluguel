@@ -3,8 +3,10 @@ package com.aluguel.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Inquilino;
@@ -12,6 +14,10 @@ import com.aluguel.models.Inquilino;
 @Controller
 public class InquilinoController {
 
+
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@RequestMapping("/")
 	private ModelAndView home() {
 		ModelAndView mvn = new ModelAndView("index");
@@ -49,6 +55,11 @@ public class InquilinoController {
 	
 	@RequestMapping("/data2")
 	private ModelAndView getData() {
+		String uri = "http://localhost:8081/carrinhos?id=1";
+		String response = restTemplate.postForObject(uri, "", String.class);
+		System.out.println(response);
+
+		
 		ModelAndView mvn = new ModelAndView("listaInquilino");
 		System.out.println("vvfd");
 		return mvn;
