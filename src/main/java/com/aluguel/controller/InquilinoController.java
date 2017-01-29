@@ -3,6 +3,7 @@ package com.aluguel.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,9 @@ import com.aluguel.models.Inquilino;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 @RequestMapping("/inquilino")
 public class InquilinoController {
+
+	@Autowired
+	RestTemplate restTemplate = new RestTemplate();
 
 	@RequestMapping("/")
 	private ModelAndView home() {
@@ -55,9 +59,8 @@ public class InquilinoController {
 	@RequestMapping("/data2")
 	private ModelAndView getData() {
 
-		RestTemplate restTemplate = new RestTemplate();
 		ModelAndView mvn = new ModelAndView("listaInquilino");
-		String uri = "http://localhost:8080/cursos?campo="+"well";
+		String uri = "http://localhost:8080/cursos?campo=" + "well";
 		String response = restTemplate.getForObject(uri, String.class);
 		System.out.println(response);
 		return mvn;
