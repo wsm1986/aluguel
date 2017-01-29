@@ -13,11 +13,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.client.RestTemplate;
+
 
 import com.aluguel.controller.InquilinoController;
 
 @EnableWebMvc
-@EnableCaching
 @ComponentScan(basePackageClasses = { InquilinoController.class, })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
@@ -69,4 +70,9 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
         mailSender.setJavaMailProperties(mailProperties);
         return mailSender;
     }
+    
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }
