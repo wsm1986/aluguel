@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	th:include="fragments/template :: page">
+<head>
+<title></title>
+</head>
+<body>
+	<div th:fragment="content">
+
+
+		<form method="POST" th:object="${inquilino}"
+			th:action="@{/inquilino/novo}">
+			>
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">CADASTRAR INQUILINO</h1>
+
+					<div class="row">
+
+
+						<div class="col-sm-6  form-group">
+							<label for="nome" class="control-label">Nome</label> <input
+								id="nome" type="text" class="form-control" th:field="*{nome}" />
+						</div>
+
+						<div class="col-sm-6  form-group">
+							<label for="nome" class="control-label">Numero Casa</label> <input
+								id="nome" type="text" class="form-control"
+								th:field="*{numeroCasa}" />
+						</div>
+
+						<div class="col-sm-6  form-group">
+
+							<label for="dtInicioContrato" class="control-label">Data Inicio Contrato</label>
+							<div class='input-group date' id='dataTransacao'>
+								<input type='text' class="form-control"
+									placeholder="ddmmyyyy" /> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-6  form-group">
+							<label for="dtFimContrato" class="control-label">Data Final Contrato</label>
+							<div class='input-group date' id='dtFimContrato'>
+								<input type='text' class="form-control"
+									placeholder="ddmmyyyy" /> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Novo</button>
+					</div>
+				</div>
+			</div>
+
+		</form>
+		<script type="text/javascript">
+        /*<![CDATA[*/
+	        $(document).ready(function() {
+	        
+             	$('#dataTransacao').datetimepicker({
+                    locale: 'pt-br',
+                    format: 'DDMMYYYY'
+                });			    
+			  } );  
+	    	/*]]>*/	
+	        </script>
+	</div>
+</body>
+</html>

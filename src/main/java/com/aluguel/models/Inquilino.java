@@ -1,21 +1,17 @@
 package com.aluguel.models;
 
+import java.util.Calendar;
+
 public class Inquilino {
+
+
 	private String numeroCasa;
 	
 	private String nome;
 	
-	private String dtInicioContrato;
+	private Calendar  dtInicioContrato;
 	
-	private String dtFinalContrato;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	private Calendar dtFinalContrato;
 
 	public String getNumeroCasa() {
 		return numeroCasa;
@@ -25,19 +21,42 @@ public class Inquilino {
 		this.numeroCasa = numeroCasa;
 	}
 
-	public String getDtInicioContrato() {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Calendar getDtInicioContrato() {
 		return dtInicioContrato;
 	}
 
-	public void setDtInicioContrato(String dtInicioContrato) {
+	public void setDtInicioContrato(Calendar dtInicioContrato) {
 		this.dtInicioContrato = dtInicioContrato;
 	}
 
-	public String getDtFinalContrato() {
+	public Calendar getDtFinalContrato() {
 		return dtFinalContrato;
 	}
 
-	public void setDtFinalContrato(String dtFinalContrato) {
+	public void setDtFinalContrato(Calendar dtFinalContrato) {
 		this.dtFinalContrato = dtFinalContrato;
 	}
+
+	public Inquilino() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Inquilino(String numeroCasa, String nome, Calendar dtInicioContrato, Calendar dtFinalContrato) {
+		super();
+		this.numeroCasa = numeroCasa;
+		this.nome = nome;
+		this.dtInicioContrato = dtInicioContrato;
+		this.dtFinalContrato = dtFinalContrato;
+	}
+
+	
 }
