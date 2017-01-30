@@ -27,7 +27,7 @@ public class InquilinoController {
 		return mvn;
 	}
 
-	@RequestMapping("/cadastro")
+	@RequestMapping("/form")
 	private ModelAndView cadastro() {
 		ModelAndView mvn = new ModelAndView("cadastroInquilino");
 		Inquilino teste = new Inquilino();
