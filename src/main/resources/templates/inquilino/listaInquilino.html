@@ -27,18 +27,23 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
+                                        <th>Telefone</th>
+                                        <th>Casa</th>
                                         <th>Inicio Contrato</th>
                                         <th>Fim Contrato</th>
                                         <th>Valor</th>
+                                        
                                         <th>excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                          			<tr th:each="lista : ${listaInquilino}">
 										<td th:text="${lista.nome}">1</td>
-										<td th:text="${lista.dtInicioContrato}">1</td>
-										<td th:text="${lista.dtFinalContrato}">1</td>
+										<td >1999999</td>
 										<td th:text="${lista.numeroCasa}">1</td>
+										<td th:text="${#calendars.format(lista.dtInicioContrato, 'dd/MMM/yyyy ')}">1</td>
+										<td th:text="${#calendars.format(lista.dtFinalContrato, 'dd/MMM/yyyy')}">1</td>
+										<td >1</td>
 										<td class="remove-item">
 											<a th:href="${(#mvc.url('IC#getData')).build()}">Get Data Param</a>
 										

@@ -28,13 +28,12 @@
 							<label for="nome" class="control-label">Numero Casa</label> <input
 								id="nome" type="text" class="form-control"
 								th:field="*{numeroCasa}" />
+		
 						</div>
-
 						<div class="col-sm-6  form-group">
-
-							<label for="dtInicioContrato" class="control-label">Data Inicio Contrato</label>
-							<div class='input-group date' id='dataTransacao'>
-								<input type='text' class="form-control"
+							<label for="dtFimContrato" class="control-label">Data Final Contrato</label>
+							<div class='input-group date' id='dtInicioContrato'>
+								<input type='text' class="form-control" th:field="*{dtInicioConverter}"
 									placeholder="ddmmyyyy" /> <span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -42,8 +41,8 @@
 						</div>
 						<div class="col-sm-6  form-group">
 							<label for="dtFimContrato" class="control-label">Data Final Contrato</label>
-							<div class='input-group date' id='dtFimContrato'>
-								<input type='text' class="form-control"
+							<div class='input-group date' id='dtFinalContrato'>
+								<input type='text' class="form-control" th:field="*{dtFinalConverter}"
 									placeholder="ddmmyyyy" /> <span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -55,14 +54,20 @@
 			</div>
 
 		</form>
+		
+
 		<script type="text/javascript">
         /*<![CDATA[*/
 	        $(document).ready(function() {
 	        
-             	$('#dataTransacao').datetimepicker({
+             	$('#dtInicioContrato').datetimepicker({
                     locale: 'pt-br',
-                    format: 'DDMMYYYY'
-                });			    
+                    format: 'DD/MM/YYYY'
+                });	
+             	$('#dtFinalContrato').datetimepicker({
+                    locale: 'pt-br',
+                    format: 'DD/MM/YYYY'
+                });
 			  } );  
 	    	/*]]>*/	
 	        </script>

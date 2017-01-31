@@ -25,7 +25,7 @@ public class DespesasController {
 		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
 		List<Despesas> lista= new ArrayList<>();
 		Despesas despesas = new Despesas();
-		despesas.setInquilino(new Inquilino("CASA 1","WELL",Calendar.getInstance(), Calendar.getInstance()));
+		//despesas.setInquilino(new Inquilino("CASA 1","WELL",Calendar.getInstance(), Calendar.getInstance()));
 		despesas.setConta(new Conta("LUZ"));
 		despesas.setDtVenciomento(Calendar.getInstance());
 		despesas.setIsStatus(true);

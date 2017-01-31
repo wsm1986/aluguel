@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aluguel.dao.InquilinoDao;
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
 import com.aluguel.models.Inquilino;
@@ -24,6 +25,9 @@ public class InquilinoController {
 
 	@Autowired
 	RestTemplate restTemplate = new RestTemplate();
+	
+	@Autowired
+	InquilinoDao dao;
 
 	@RequestMapping("/")
 	private ModelAndView home() {
@@ -37,8 +41,13 @@ public class InquilinoController {
 		Inquilino teste = new Inquilino();
 		teste.setNome("wellington");
 		teste.setNumeroCasa("1");
-		teste.setDtFinalContrato(Calendar.getInstance());
-		teste.setDtInicioContrato(Calendar.getInstance());
+		teste.setDtInicioConverter("01/01/2015"); 
+		teste.setDtFinalConverter("01/01/2016");
+		Despesas despesas = new Despesas();
+		despesas.setConta(new Conta("Aluguel"));
+		despesas.setDtVenciomento(Calendar.getInstance());
+		despesas.setIsStatus(true);
+		despesas.setValor(new BigDecimal("550.00"));
 		mvn.addObject("inquilino", teste);
 
 		return mvn;
@@ -52,7 +61,7 @@ public class InquilinoController {
 			String nome = inquilino.getNome() + " - " + i;
 			inquilino.setNome(nome);
 			Despesas despesas = new Despesas();
-			despesas.setInquilino(inquilino);
+			//despesas.setInquilino(inquilino);
 			despesas.setConta(new Conta("Aluguel"));
 			despesas.setDtVenciomento(Calendar.getInstance());
 			despesas.setIsStatus(true);
@@ -67,16 +76,8 @@ public class InquilinoController {
 	@RequestMapping("/lista")
 	private ModelAndView lista() {
 		ModelAndView mvn = new ModelAndView("inquilino/listaInquilino");
-		List<Inquilino> lista = new ArrayList<Inquilino>();
-		for (int i = 0; i < 20; i++) {
-			Inquilino inquilino = new Inquilino();
-			inquilino.setNome("wellington" + i);
-			inquilino.setNumeroCasa("1" + i);
-			inquilino.setDtFinalContrato(Calendar.getInstance());
-			inquilino.setDtInicioContrato(Calendar.getInstance());
-			lista.add(inquilino);
-		}
-		mvn.addObject("listaInquilino", lista);
+		
+		mvn.addObject("listaInquilino", dao.list());
 		return mvn;
 	}
 

@@ -15,7 +15,7 @@ public class ServletSpringMvc extends
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { SecurityConfiguration.class,
-				AppWebConfiguration.class, };
+				AppWebConfiguration.class };
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ServletSpringMvc extends
 			throws ServletException {
 		super.onStartup(servletContext);
 		servletContext.addListener(new RequestContextListener());
-		servletContext.setInitParameter("spring.profiles.active", "prod");
+		servletContext.setInitParameter("spring.profiles.active", "dev");
 	}
 
 }
