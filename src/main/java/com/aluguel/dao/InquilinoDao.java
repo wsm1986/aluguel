@@ -18,4 +18,8 @@ public class InquilinoDao {
 		return (List<Inquilino>) rep.findAll();
 	}
 	
+	public void save(Inquilino inquilino){
+		save(inquilino);
+	}
+	
 }

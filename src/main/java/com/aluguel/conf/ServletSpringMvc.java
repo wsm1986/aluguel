@@ -15,7 +15,7 @@ public class ServletSpringMvc extends
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { SecurityConfiguration.class,
-				AppWebConfiguration.class };
+				AppWebConfiguration.class,};
 	}
 
 	@Override

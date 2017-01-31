@@ -56,18 +56,21 @@ public class InquilinoController {
 	@RequestMapping("/novo")
 	private ModelAndView novo(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
+		
 		List<Despesas> lista = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			String nome = inquilino.getNome() + " - " + i;
-			inquilino.setNome(nome);
+		for (int i = 0; i < 1; i++) {
 			Despesas despesas = new Despesas();
 			//despesas.setInquilino(inquilino);
-			despesas.setConta(new Conta("Aluguel"));
+			Conta c = new Conta();
+			c.setId(1);
+			despesas.setConta(c);
 			despesas.setDtVenciomento(Calendar.getInstance());
 			despesas.setIsStatus(true);
 			despesas.setValor(new BigDecimal("550.00"));
 			lista.add(despesas);
 		}
+		inquilino.setListDespesas(lista);
+		dao.save(inquilino);
 		mvn.addObject("listDespesas", lista);
 
 		return mvn;
