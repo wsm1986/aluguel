@@ -26,8 +26,8 @@ public class InquilinoController {
 	@Autowired
 	RestTemplate restTemplate = new RestTemplate();
 	
-	@Autowired
-	InquilinoDao dao;
+	
+	InquilinoDao dao = new InquilinoDao();
 
 	@RequestMapping("/")
 	private ModelAndView home() {

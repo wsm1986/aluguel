@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
-import com.aluguel.models.Inquilino;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
