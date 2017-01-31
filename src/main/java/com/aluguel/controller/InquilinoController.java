@@ -44,7 +44,7 @@ public class InquilinoController {
 		teste.setDtInicioConverter("01/01/2015"); 
 		teste.setDtFinalConverter("01/01/2016");
 		Despesas despesas = new Despesas();
-		despesas.setConta(new Conta("Aluguel"));
+		//despesas.setConta(new Conta("Aluguel"));
 		despesas.setDtVenciomento(Calendar.getInstance());
 		despesas.setIsStatus(true);
 		despesas.setValor(new BigDecimal("550.00"));
@@ -62,7 +62,7 @@ public class InquilinoController {
 			Despesas despesas = new Despesas();
 			//despesas.setInquilino(inquilino);
 			Conta c = new Conta();
-			c.setId(1);
+			c.setId(1l);
 			despesas.setConta(c);
 			despesas.setDtVenciomento(Calendar.getInstance());
 			despesas.setIsStatus(true);

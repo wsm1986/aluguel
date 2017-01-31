@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.dao.ContaDao;
 import com.aluguel.models.Conta;
+import com.aluguel.repository.ContaRepository;
 
 @Controller
 @RequestMapping("/contas")
@@ -19,7 +20,7 @@ public class ContasController {
 	List<Conta> li = new ArrayList<>();
 
 	@Autowired
-	ContaDao dao;
+	ContaRepository dao;
 
 	@RequestMapping("/form")
 	private ModelAndView cadastro() {

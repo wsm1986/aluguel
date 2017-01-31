@@ -1,11 +1,9 @@
 package com.aluguel.repository;
 
-import java.io.Serializable;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.aluguel.models.Conta;
 
-public interface ContaRepository extends JpaRepository<Conta, Long>{
+public interface ContaRepository extends CrudRepository<Conta, Long>{
 
 }
