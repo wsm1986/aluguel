@@ -12,13 +12,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Despesas {
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +29,15 @@ public class Despesas {
 	
 	private Calendar dtVenciomento;
 
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
@@ -74,5 +76,10 @@ public class Despesas {
 
 	public void setDtVenciomento(Calendar dtVenciomento) {
 		this.dtVenciomento = dtVenciomento;
+	}
+
+	public Despesas() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 }
