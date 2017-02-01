@@ -4,20 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
 public class Inquilino {
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String numeroCasa;
@@ -30,7 +21,6 @@ public class Inquilino {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
-	@OneToMany
 	private List<Despesas> listDespesas;
 
 
