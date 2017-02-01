@@ -17,8 +17,6 @@ public class Despesas {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToOne
-	private Inquilino inquilino;
 	
 	@OneToOne
 	private Conta Conta;
@@ -40,14 +38,7 @@ public class Despesas {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public Inquilino getInquilino() {
-		return inquilino;
-	}
 
-	public void setInquilino(Inquilino inquilino) {
-		this.inquilino = inquilino;
-	}
 
 	public Conta getConta() {
 		return Conta;
