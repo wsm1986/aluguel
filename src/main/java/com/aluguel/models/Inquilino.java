@@ -118,12 +118,4 @@ public class Inquilino {
 		}
 	}
 
-	public List<Despesas> getListDespesas() {
-		return listDespesas;
-	}
-
-	public void setListDespesas(List<Despesas> listDespesas) {
-		this.listDespesas = listDespesas;
-	}
-
 }
