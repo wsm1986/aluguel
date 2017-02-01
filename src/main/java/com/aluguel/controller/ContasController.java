@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aluguel.dao.ContaDao;
 import com.aluguel.models.Conta;
 import com.aluguel.repository.ContaRepository;
 

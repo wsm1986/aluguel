@@ -69,7 +69,7 @@ public class InquilinoController {
 			despesas.setValor(new BigDecimal("550.00"));
 			lista.add(despesas);
 		}
-		inquilino.setListDespesas(lista);
+		//inquilino.setListDespesas(lista);
 		dao.save(inquilino);
 		mvn.addObject("listDespesas", lista);
 
