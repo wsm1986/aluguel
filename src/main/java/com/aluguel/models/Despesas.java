@@ -3,13 +3,24 @@ package com.aluguel.models;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Despesas {
 
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@OneToOne
 	private Inquilino inquilino;
 	
+	@OneToOne
 	private Conta Conta;
 
 	private BigDecimal valor;
@@ -18,6 +29,9 @@ public class Despesas {
 	
 	private Calendar dtVenciomento;
 
+	
+	public Despesas() {
+	}
 
 	public int getId() {
 		return id;
@@ -67,8 +81,5 @@ public class Despesas {
 		this.dtVenciomento = dtVenciomento;
 	}
 
-	public Despesas() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 }
