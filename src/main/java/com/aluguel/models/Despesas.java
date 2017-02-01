@@ -16,11 +16,13 @@ public class Despesas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	
 	@OneToOne
 	private Conta Conta;
 
+	@OneToOne
+	private Inquilino inquilino;
+	
 	private BigDecimal valor;
 	
 	private Boolean isStatus;
@@ -70,6 +72,14 @@ public class Despesas {
 
 	public void setDtVenciomento(Calendar dtVenciomento) {
 		this.dtVenciomento = dtVenciomento;
+	}
+
+	public Inquilino getInquilino() {
+		return inquilino;
+	}
+
+	public void setInquilino(Inquilino inquilino) {
+		this.inquilino = inquilino;
 	}
 
 

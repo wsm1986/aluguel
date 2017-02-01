@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,7 +30,9 @@ public class Inquilino {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
-
+	@OneToMany
+	private List<Despesas> listDespesas;
+	
 	public int getId() {
 		return id;
 	}
@@ -72,12 +75,9 @@ public class Inquilino {
 	}
 
 	public Inquilino() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Inquilino(String numeroCasa, String nome, Calendar dtInicioContrato, Calendar dtFinalContrato) {
-		super();
 		this.numeroCasa = numeroCasa;
 		this.nome = nome;
 		this.dtInicioContrato = dtInicioContrato;
@@ -116,6 +116,14 @@ public class Inquilino {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Despesas> getListDespesas() {
+		return listDespesas;
+	}
+
+	public void setListDespesas(List<Despesas> listDespesas) {
+		this.listDespesas = listDespesas;
 	}
 
 }
