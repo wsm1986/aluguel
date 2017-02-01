@@ -31,15 +31,28 @@
                                         <th>Vencimento</th>
                                         <th>Valor</th>
                                         <th>Status</th>
+                                        <th>Alterar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                         			<tr th:each="lista : ${listDespesas}">
-										<td>1</td>
-										<td>1</td>
-										<td th:text="${lista.dtVenciomento.time}">1</td>
+                         			<tr th:each="lista : ${listDespesas}"  th:if="${lista.isStatus}" class="success">
+										<td th:text="${lista.inquilino}">1</td>
+										<td th:text="${lista.conta}">1</td>
+										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MMM/yyyy HH:mm')}">1</td>
 										<td th:text="${lista.valor}">1</td>
 										<td th:text="${lista.isStatus}">1</td>
+										<td >	<a th:href="${(#mvc.url('IC#getData')).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
+										
+                                    </tr>
+                                    
+                                    <tr th:each="lista : ${listDespesas}" th:if="${!lista.isStatus}" class="danger">
+										<td th:text="${lista.inquilino}">1</td>
+										<td th:text="${lista.conta}">1</td>
+										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MMM/yyyy HH:mm')}">1</td>
+										<td th:text="${lista.valor}">1</td>
+										<td th:text="${lista.isStatus}">1</td>
+        								<td>	<a th:href="${(#mvc.url('IC#getData')).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>  </td>
+        								
 										
                                     </tr>
                                 </tbody>
@@ -59,6 +72,10 @@
             responsive: true
         });
     });
+
+    function alterarClass(){
+        alert("1");
+    }
     </script>
             
 </div>

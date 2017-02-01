@@ -1,5 +1,6 @@
 package com.aluguel.models;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -33,6 +34,10 @@ public class Inquilino {
 
 	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Despesas> listDespesas;
+	
+	private BigDecimal valorContrato;
+	
+	private String telefone;
 	
 	public Long getId() {
 		return id;
@@ -125,6 +130,27 @@ public class Inquilino {
 
 	public void setListDespesas(List<Despesas> listDespesas) {
 		this.listDespesas = listDespesas;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	@Override
+	public String toString() {
+		return nome;
+	}
+
+	public BigDecimal getValorContrato() {
+		return valorContrato;
+	}
+
+	public void setValorContrato(BigDecimal valorContrato) {
+		this.valorContrato = valorContrato;
 	}
 
 }

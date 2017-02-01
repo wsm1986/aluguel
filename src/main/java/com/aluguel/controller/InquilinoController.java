@@ -1,8 +1,11 @@
 package com.aluguel.controller;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aluguel.dao.InquilinoDao;
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
 import com.aluguel.models.Inquilino;
+import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.InquilinoRepository;
 
 @Controller
@@ -26,11 +29,14 @@ public class InquilinoController {
 
 	@Autowired
 	RestTemplate restTemplate = new RestTemplate();
-	
+
 	@Autowired
-	InquilinoRepository repository;
-	
-	
+	InquilinoRepository inquilinoRepository;
+
+	@Autowired
+	ContaRepository contaRepository;
+
+	private final String aluguel = "Aluguel";
 
 	@RequestMapping("/")
 	private ModelAndView home() {
@@ -44,7 +50,7 @@ public class InquilinoController {
 		Inquilino teste = new Inquilino();
 		teste.setNome("wellington");
 		teste.setNumeroCasa("1");
-		teste.setDtInicioConverter("01/01/2015"); 
+		teste.setDtInicioConverter("01/01/2015");
 		teste.setDtFinalConverter("01/01/2016");
 		Despesas despesas = new Despesas();
 		Conta c = new Conta();
@@ -61,31 +67,35 @@ public class InquilinoController {
 	@RequestMapping("/novo")
 	private ModelAndView novo(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
-		
-		List<Despesas> lista = new ArrayList<>();
-		for (int i = 0; i < 1; i++) {
-			Despesas despesas = new Despesas();
-			//despesas.setInquilino(inquilino);
-			Conta c = new Conta();
-			despesas.setInquilino(inquilino);
-			c.setId(2l);
-			despesas.setConta(c);
-			despesas.setDtVenciomento(Calendar.getInstance());
-			despesas.setIsStatus(true);
-			despesas.setValor(new BigDecimal("550.00"));
-			lista.add(despesas);
-		}
-		inquilino.setListDespesas(lista);
-		repository.save(inquilino);
-		mvn.addObject("listDespesas", lista);
+		List<Despesas> lista = new ArrayList<Despesas>();
+		Despesas despesas;
+		Conta conta = contaRepository.findByDescricao(aluguel);
 
+		while (!inquilino.getDtInicioContrato().getTime().after(inquilino.getDtFinalContrato().getTime())) {
+			Calendar calendar = new GregorianCalendar(inquilino.getDtInicioContrato().get(Calendar.YEAR),
+					inquilino.getDtInicioContrato().get(Calendar.MONTH),
+					inquilino.getDtInicioContrato().get(Calendar.DAY_OF_WEEK));
+			despesas = new Despesas();
+			despesas.setInquilino(inquilino);
+			despesas.setConta(conta);
+			despesas.setDtVenciomento(calendar);
+			despesas.setIsStatus(Boolean.FALSE);
+			despesas.setValor(inquilino.getValorContrato());
+			lista.add(despesas);
+			inquilino.getDtInicioContrato().add(Calendar.MONTH, 1);
+
+		}
+
+		inquilino.setListDespesas(lista);
+		inquilinoRepository.save(inquilino);
+		mvn.addObject("listDespesas", lista);
 		return mvn;
 	}
 
 	@RequestMapping("/lista")
 	private ModelAndView lista() {
 		ModelAndView mvn = new ModelAndView("inquilino/listaInquilino");
-		mvn.addObject("listaInquilino", repository.findAll());
+		mvn.addObject("listaInquilino", inquilinoRepository.findAll());
 		return mvn;
 	}
 

@@ -25,13 +25,13 @@
 						</div>
 
 						<div class="col-sm-6  form-group">
-							<label for="nome" class="control-label">Numero Casa</label> <input
-								id="nome" type="text" class="form-control"
+							<label for="nome" class="control-label">Numero Casa</label>
+							 <input	id="nome" type="text" class="form-control"
 								th:field="*{numeroCasa}" />
 		
 						</div>
 						<div class="col-sm-6  form-group">
-							<label for="dtFimContrato" class="control-label">Data Final Contrato</label>
+							<label for="dtFimContrato" class="control-label">Data Inicio Contrato</label>
 							<div class='input-group date' id='dtInicioContrato'>
 								<input type='text' class="form-control" th:field="*{dtInicioConverter}"
 									placeholder="ddmmyyyy" /> <span class="input-group-addon">
@@ -48,8 +48,17 @@
 								</span>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Novo</button>
+						
+						<div class="col-sm-6  form-group">
+							<label for="nome" class="control-label">Telefone</label> 
+							<input	id="phone" type="text" class="form-control" th:field="*{telefone}" placeholder="(99) 9999-9999" />
+						</div>
+						<div class="col-sm-6  form-group">
+							<label for="nome" class="control-label">Valor</label> 
+							<input	id="phone" type="text" class="form-control" th:field="*{valorContrato}"/>
+						</div>
 					</div>
+						<button type="submit" class="btn btn-primary">Novo</button>
 				</div>
 			</div>
 
@@ -68,7 +77,11 @@
                     locale: 'pt-br',
                     format: 'DD/MM/YYYY'
                 });
+
+             	$("#phone").mask("(99) 9999-9999");
 			  } );  
+
+			  
 	    	/*]]>*/	
 	        </script>
 	</div>

@@ -45,9 +45,8 @@
 										<td th:text="${#calendars.format(lista.dtFinalContrato, 'dd/MMM/yyyy')}">1</td>
 										<td >1</td>
 										<td class="remove-item">
-											<a th:href="${(#mvc.url('IC#getData')).build()}">Get Data Param</a>
+											<a th:href="${(#mvc.url('IC#getData')).build()}" class="fa fa-trash-o fa-fw  " ></a>
 										
-        									<input type="image" src="../static/imagens/excluir.png" alt="Excluir" title="Excluir" />
 				      					</td>
                                     </tr>
                                 </tbody>
