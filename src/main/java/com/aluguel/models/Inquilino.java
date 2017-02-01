@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Inquilino {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private String numeroCasa;
 
@@ -30,14 +31,14 @@ public class Inquilino {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Despesas> listDespesas;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	} 
 	

@@ -17,6 +17,7 @@ import com.aluguel.dao.InquilinoDao;
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
 import com.aluguel.models.Inquilino;
+import com.aluguel.repository.InquilinoRepository;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
@@ -26,8 +27,10 @@ public class InquilinoController {
 	@Autowired
 	RestTemplate restTemplate = new RestTemplate();
 	
+	@Autowired
+	InquilinoRepository repository;
 	
-	InquilinoDao dao = new InquilinoDao();
+	
 
 	@RequestMapping("/")
 	private ModelAndView home() {
@@ -44,7 +47,9 @@ public class InquilinoController {
 		teste.setDtInicioConverter("01/01/2015"); 
 		teste.setDtFinalConverter("01/01/2016");
 		Despesas despesas = new Despesas();
-		//despesas.setConta(new Conta("Aluguel"));
+		Conta c = new Conta();
+		c.setId(1l);
+		despesas.setConta(c);
 		despesas.setDtVenciomento(Calendar.getInstance());
 		despesas.setIsStatus(true);
 		despesas.setValor(new BigDecimal("550.00"));
@@ -62,15 +67,16 @@ public class InquilinoController {
 			Despesas despesas = new Despesas();
 			//despesas.setInquilino(inquilino);
 			Conta c = new Conta();
-			c.setId(1l);
+			despesas.setInquilino(inquilino);
+			c.setId(2l);
 			despesas.setConta(c);
 			despesas.setDtVenciomento(Calendar.getInstance());
 			despesas.setIsStatus(true);
 			despesas.setValor(new BigDecimal("550.00"));
 			lista.add(despesas);
 		}
-		//inquilino.setListDespesas(lista);
-		dao.save(inquilino);
+		inquilino.setListDespesas(lista);
+		repository.save(inquilino);
 		mvn.addObject("listDespesas", lista);
 
 		return mvn;
@@ -79,8 +85,7 @@ public class InquilinoController {
 	@RequestMapping("/lista")
 	private ModelAndView lista() {
 		ModelAndView mvn = new ModelAndView("inquilino/listaInquilino");
-		
-		mvn.addObject("listaInquilino", dao.list());
+		mvn.addObject("listaInquilino", repository.findAll());
 		return mvn;
 	}
 
