@@ -23,7 +23,7 @@ public class ContasController {
 
 	@RequestMapping("/form")
 	private ModelAndView form() {
-		ModelAndView mvn = new ModelAndView("contas/cadastro");
+		ModelAndView mvn = new ModelAndView("contas/novo");
 		mvn.addObject("contas", new Conta());
 		mvn.addObject("comboContas", dao.findAll());
 		return mvn;

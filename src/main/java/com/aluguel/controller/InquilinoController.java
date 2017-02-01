@@ -43,7 +43,7 @@ public class InquilinoController {
 
 	@RequestMapping("/form")
 	private ModelAndView cadastro(Inquilino inquilino) {
-		ModelAndView mvn = new ModelAndView("inquilino/cadastroInquilino");
+		ModelAndView mvn = new ModelAndView("inquilino/novo");
 		return mvn;
 	}
 
@@ -74,8 +74,8 @@ public class InquilinoController {
 	}
 
 	@RequestMapping("/lista")
-	private ModelAndView lista() {
-		ModelAndView mvn = new ModelAndView("inquilino/listaInquilino");
+	private ModelAndView inquilinos() {
+		ModelAndView mvn = new ModelAndView("inquilino/lista");
 		mvn.addObject("listaInquilino", inquilinoRepository.findAll());
 		return mvn;
 	}
@@ -83,7 +83,7 @@ public class InquilinoController {
 	@RequestMapping("/data2")
 	private ModelAndView getData() {
 
-		ModelAndView mvn = new ModelAndView("inquilino/listaInquilino");
+		ModelAndView mvn = new ModelAndView("inquilino/lista");
 		String uri = "http://localhost:8080/cursos?campo=" + "well";
 		String response = restTemplate.getForObject(uri, String.class);
 		System.out.println(response);

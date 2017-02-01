@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Despesas;
 import com.aluguel.models.Inquilino;
+import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.DespesasRepository;
 import com.aluguel.repository.InquilinoRepository;
 
@@ -24,10 +25,21 @@ public class DespesasController {
 	
 	@Autowired
 	InquilinoRepository inquilinoRepository;
+	
+	@Autowired
+	ContaRepository dao;
 
+	@RequestMapping("/form")
+	private ModelAndView cadastro(Despesas despesa) {
+		ModelAndView mvn = new ModelAndView("despesas/novo");
+		mvn.addObject("inquilinos", inquilinoRepository.findAll());
+		mvn.addObject("comboContas", dao.findAll());
+		return mvn;
+	}
+	
 	@RequestMapping("/pesquisa")
-	private ModelAndView lista() {
-		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
+	private ModelAndView despesas() {
+		ModelAndView mvn = new ModelAndView("despesas/lista");
 		mvn.addObject("inquilino", new Inquilino());
 		mvn.addObject("listDespesas", repository.findAll());
 		return mvn;
@@ -35,7 +47,7 @@ public class DespesasController {
 	
 	@RequestMapping(value = "/find", method = RequestMethod.POST)
 	private ModelAndView getFindInquilino(Inquilino inquilino) {
-		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
+		ModelAndView mvn = new ModelAndView("despesas/lista");
 		mvn.addObject("inquilino", new Inquilino());
 		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
 		mvn.addObject("listDespesas", inquilino.getListDespesas());
@@ -46,7 +58,14 @@ public class DespesasController {
 		Despesas despesas = repository.findById(id);
 		despesas.setIsStatus(status);
 		repository.save(despesas);
-		return lista();
+		return despesas();
 	}
 
+	@RequestMapping("/novo")
+	private ModelAndView novo(Despesas despesa) {
+		ModelAndView mvn = new ModelAndView("despesas/novo");
+		mvn.addObject("inquilinos", inquilinoRepository.findAll());
+		mvn.addObject("comboContas", dao.findAll());
+		return mvn;
+	}
 }
