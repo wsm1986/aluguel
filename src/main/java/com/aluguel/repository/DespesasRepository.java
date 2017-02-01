@@ -6,5 +6,5 @@ import com.aluguel.models.Despesas;
 
 public interface DespesasRepository extends CrudRepository<Despesas, Long>{
 	
-
+	Despesas findById(Long id);
 }

@@ -1,10 +1,7 @@
 package com.aluguel.controller;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -45,28 +42,13 @@ public class InquilinoController {
 	}
 
 	@RequestMapping("/form")
-	private ModelAndView cadastro() {
+	private ModelAndView cadastro(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("inquilino/cadastroInquilino");
-		Inquilino teste = new Inquilino();
-		teste.setNome("wellington");
-		teste.setNumeroCasa("1");
-		teste.setDtInicioConverter("01/01/2015");
-		teste.setDtFinalConverter("01/01/2016");
-		Despesas despesas = new Despesas();
-		Conta c = new Conta();
-		c.setId(1l);
-		despesas.setConta(c);
-		despesas.setDtVenciomento(Calendar.getInstance());
-		despesas.setIsStatus(true);
-		despesas.setValor(new BigDecimal("550.00"));
-		mvn.addObject("inquilino", teste);
-
 		return mvn;
 	}
 
 	@RequestMapping("/novo")
 	private ModelAndView novo(Inquilino inquilino) {
-		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
 		List<Despesas> lista = new ArrayList<Despesas>();
 		Despesas despesas;
 		Conta conta = contaRepository.findByDescricao(aluguel);
@@ -88,8 +70,7 @@ public class InquilinoController {
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		mvn.addObject("listDespesas", lista);
-		return mvn;
+		return new ModelAndView("redirect:form");
 	}
 
 	@RequestMapping("/lista")

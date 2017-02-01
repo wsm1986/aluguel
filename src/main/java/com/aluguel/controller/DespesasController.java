@@ -3,26 +3,50 @@ package com.aluguel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aluguel.models.Despesas;
+import com.aluguel.models.Inquilino;
 import com.aluguel.repository.DespesasRepository;
+import com.aluguel.repository.InquilinoRepository;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
-@RequestMapping("despesas")
+@RequestMapping("/despesas")
 public class DespesasController {
 
 	@Autowired
 	DespesasRepository repository;
+	
+	@Autowired
+	InquilinoRepository inquilinoRepository;
 
 	@RequestMapping("/pesquisa")
 	private ModelAndView lista() {
 		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
-
+		mvn.addObject("inquilino", new Inquilino());
 		mvn.addObject("listDespesas", repository.findAll());
 		return mvn;
+	}
+	
+	@RequestMapping(value = "/find", method = RequestMethod.POST)
+	private ModelAndView getFindInquilino(Inquilino inquilino) {
+		ModelAndView mvn = new ModelAndView("despesas/listarDespesas");
+		mvn.addObject("inquilino", new Inquilino());
+		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
+		mvn.addObject("listDespesas", inquilino.getListDespesas());
+		return mvn;
+	}
+	@RequestMapping("/data/{status}/{id}")
+	private ModelAndView getUpdateStatus(@PathVariable("status") Boolean status, @PathVariable("id") Long id) {
+		Despesas despesas = repository.findById(id);
+		despesas.setIsStatus(status);
+		repository.save(despesas);
+		return lista();
 	}
 
 }

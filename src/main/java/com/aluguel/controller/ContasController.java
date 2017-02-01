@@ -22,7 +22,7 @@ public class ContasController {
 	ContaRepository dao;
 
 	@RequestMapping("/form")
-	private ModelAndView cadastro() {
+	private ModelAndView form() {
 		ModelAndView mvn = new ModelAndView("contas/cadastro");
 		mvn.addObject("contas", new Conta());
 		mvn.addObject("comboContas", dao.findAll());
@@ -32,11 +32,7 @@ public class ContasController {
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	private ModelAndView adicionarConta(Conta conta) {
 		dao.save(conta);
-		ModelAndView mvn = new ModelAndView("contas/cadastro");
-		mvn.addObject("contas", new Conta());
-		li.add(conta);
-		mvn.addObject("comboContas", li);
-		return mvn;
+		return form();
 	}
 
 }

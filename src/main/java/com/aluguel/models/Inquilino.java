@@ -3,6 +3,7 @@ package com.aluguel.models;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -93,7 +94,7 @@ public class Inquilino {
 
 	public String getDtInicioConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-		return sdf.format(dtInicioContrato.getTime());
+		return sdf.format(dtInicioContrato  == null ? new Date() : dtInicioContrato.getTime());
 	}
 
 	public void setDtInicioConverter(String dtInicioConverter) {
@@ -110,7 +111,7 @@ public class Inquilino {
 
 	public String getDtFinalConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-		return sdf.format(dtFinalContrato.getTime());
+		return sdf.format(dtFinalContrato == null ? new Date() : dtFinalContrato.getTime());
 	}
 
 	public void setDtFinalConverter(String dtFinalConverter) {
