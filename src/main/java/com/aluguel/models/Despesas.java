@@ -17,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Despesas {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@OneToOne
