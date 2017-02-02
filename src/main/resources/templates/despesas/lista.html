@@ -50,7 +50,7 @@
                          			<tr th:each="lista : ${listDespesas}"  th:if="${lista.isStatus}" class="success">
 										<td th:text="${lista.inquilino}">1</td>
 										<td th:text="${lista.conta}">1</td>
-										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MMM/yyyy HH:mm')}">1</td>
+										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MM/yyyy HH:mm')}">1</td>
 										<td th:text="${lista.valor}">1</td>
 										<td th:text="${lista.isStatus}">1</td>
 										<td >	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,false).arg(1,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
@@ -60,7 +60,7 @@
                                     <tr th:each="lista : ${listDespesas}" th:if="${!lista.isStatus}" class="danger">
 										<td th:text="${lista.inquilino}">1</td>
 										<td th:text="${lista.conta}">1</td>
-										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MMM/yyyy HH:mm')}">1</td>
+										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MM/yyyy HH:mm')}">1</td>
 										<td th:text="${lista.valor}">1</td>
 										<td th:text="${lista.isStatus}">1</td>
         								<td>	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,true).arg(1,lista.id)).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>  </td>
