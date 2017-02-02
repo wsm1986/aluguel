@@ -15,11 +15,11 @@ import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-public class Inquilino {
+public class Inquilino2 {
 
    
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String numeroCasa;
@@ -80,10 +80,10 @@ public class Inquilino {
 		this.dtFinalContrato = dtFinalContrato;
 	}
 
-	public Inquilino() {
+	public Inquilino2() {
 	}
 
-	public Inquilino(String numeroCasa, String nome, Calendar dtInicioContrato, Calendar dtFinalContrato) {
+	public Inquilino2(String numeroCasa, String nome, Calendar dtInicioContrato, Calendar dtFinalContrato) {
 		this.numeroCasa = numeroCasa;
 		this.nome = nome;
 		this.dtInicioContrato = dtInicioContrato;
@@ -153,7 +153,7 @@ public class Inquilino {
 		this.valorContrato = valorContrato;
 	}
 
-	public Inquilino(Long id) {
+	public Inquilino2(Long id) {
 		this.id = id;
 	}
 

@@ -5,10 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Conta {
+public class Conta2 {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String descricao;
@@ -22,7 +22,7 @@ public class Conta {
 		this.descricao = descricao;
 	}
 
-	public Conta() {
+	public Conta2() {
 	}
 
 
@@ -39,7 +39,7 @@ public class Conta {
 		return descricao;
 	}
 
-	public Conta(Long id) {
+	public Conta2(Long id) {
 		super();
 		this.id = id;
 	}
