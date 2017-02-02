@@ -60,7 +60,7 @@ public class InquilinoController {
 			despesas = new Despesas();
 			despesas.setInquilino(inquilino);
 			despesas.setConta(conta);
-			//despesas.setDtVenciomento(calendar);
+			despesas.setDtVenciomento(calendar);
 			despesas.setIsStatus(Boolean.FALSE);
 			despesas.setValor(inquilino.getValorContrato());
 			lista.add(despesas);
