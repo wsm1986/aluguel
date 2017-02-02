@@ -32,7 +32,8 @@ public class Despesas {
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtVenciomento;
-
+	
+	
 	public Despesas() {
 	}
 
@@ -83,21 +84,36 @@ public class Despesas {
 	public void setInquilino(Inquilino inquilino) {
 		this.inquilino = inquilino;
 	}
-
-	public String getDtVencimentoConverter() {
+	public String getDtConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		return sdf.format(dtVenciomento == null ? new Date() : dtVenciomento.getTime());
 	}
 
-	public void setDtFinalConverter(String dtFinalConverter) {
+	public void setDtConverter(String dtInicioConverter) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(sdf.parse(dtFinalConverter));
+			calendar.setTime(sdf.parse(dtInicioConverter));
 			this.setDtVenciomento(calendar);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
+	public Long getIdInquilino() {
+		return new Inquilino().getId();
+	}
+
+	public void setIdInquilino(Long idInquilino) {
+		this.setInquilino(new Inquilino(idInquilino));
+	}
+	
+	public Long getIdConta() {
+		return new Conta().getId();
+	}
+
+	public void setIdConta(Long idConta) {
+		this.setConta(new Conta(idConta));
+	}
 }

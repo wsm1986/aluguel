@@ -3,6 +3,7 @@ package com.aluguel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +31,7 @@ public class DespesasController {
 	ContaRepository dao;
 
 	@RequestMapping("/form")
-	private ModelAndView cadastro(Despesas despesa) {
+	private ModelAndView cadastro(Despesas despesas) {
 		ModelAndView mvn = new ModelAndView("despesas/novo");
 		mvn.addObject("inquilinos", inquilinoRepository.findAll());
 		mvn.addObject("comboContas", dao.findAll());
@@ -62,10 +63,11 @@ public class DespesasController {
 	}
 
 	@RequestMapping("/novo")
-	private ModelAndView novo(Despesas despesa) {
+	private ModelAndView novo(Despesas despesa, ModelMap map) {
 		ModelAndView mvn = new ModelAndView("despesas/novo");
-		mvn.addObject("inquilinos", inquilinoRepository.findAll());
-		mvn.addObject("comboContas", dao.findAll());
+		despesa.setInquilino(inquilinoRepository.findById(despesa.getInquilino().getId()));
+		despesa.setConta(dao.findById(despesa.getConta().getId()));
+		repository.save(despesa);
 		return mvn;
 	}
 }

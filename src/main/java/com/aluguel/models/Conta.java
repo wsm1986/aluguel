@@ -39,4 +39,9 @@ public class Conta {
 	public String toString() {
 		return descricao;
 	}
+
+	public Conta(Long id) {
+		super();
+		this.id = id;
+	}
 }

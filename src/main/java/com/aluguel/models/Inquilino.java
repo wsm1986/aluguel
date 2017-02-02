@@ -154,4 +154,8 @@ public class Inquilino {
 		this.valorContrato = valorContrato;
 	}
 
+	public Inquilino(Long id) {
+		this.id = id;
+	}
+
 }
