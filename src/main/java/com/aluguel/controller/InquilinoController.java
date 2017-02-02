@@ -44,10 +44,10 @@ public class InquilinoController {
 	@RequestMapping("/form")
 	private ModelAndView cadastro(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
-		List<Inquilino> list = (List<Inquilino>) inquilinoRepository.findAll();
+		/*List<Inquilino> list = (List<Inquilino>) inquilinoRepository.findAll();
 		for (Inquilino aux : list) {
 			inquilinoRepository.delete(aux);
-		}
+		}*/
 		return mvn;
 	}
 
