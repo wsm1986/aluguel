@@ -49,6 +49,9 @@ public class Inquilino {
 	@NotBlank(message = "Telefone é obrigatório")
 	private String telefone;
 	
+	@NotBlank(message = "Email é obrigatório")
+	private String email;
+	
 	public Long getId() {
 		return id;
 	}
@@ -165,6 +168,14 @@ public class Inquilino {
 
 	public Inquilino(Long id) {
 		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

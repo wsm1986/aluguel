@@ -45,6 +45,12 @@
 							<label for="nome" class="control-label">Telefone</label> 
 							<input	id="phone" type="text" class="form-control" th:field="*{telefone}" placeholder="(99) 9999-9999" />
 						</div>
+						
+						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
+							<label for="nome" class="control-label">Email</label> 
+							<input	id="phone" type="text" class="form-control" th:field="*{email}"/>
+						</div>
+						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('valorContrato')} ? has-error">
 							<label for="nome" class="control-label">Valor</label> 
 							<input	id="phone" type="text" class="form-control" th:field="*{valorContrato}"/>
