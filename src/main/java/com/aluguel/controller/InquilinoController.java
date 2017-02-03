@@ -75,9 +75,10 @@ public class InquilinoController {
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		ModelAndView mav = new ModelAndView("redirect:form");
-		mav.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
-		return mav;
+		//ModelAndView mav = new ModelAndView("redirect:form");
+		ModelAndView mvn = new ModelAndView("inquilino/novo");
+		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
+		return mvn;
 	}
 
 	@RequestMapping("/lista")
