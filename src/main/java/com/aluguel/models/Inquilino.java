@@ -33,11 +33,9 @@ public class Inquilino {
 	private String nome;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@NotNull(message = "Data Inicio é obrigatório")
 	private Calendar dtInicioContrato;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@NotNull(message = "Data Final é obrigatório")
 	private Calendar dtFinalContrato;
 
 	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
@@ -51,6 +49,12 @@ public class Inquilino {
 	
 	@NotBlank(message = "Email é obrigatório")
 	private String email;
+	
+	@NotBlank(message = "Tempo de Contrato é obrigatório")
+	private String tempoContrato;
+	
+	@NotBlank(message = "Selecione o melhor dia para pagamento")
+	private String diaVencimento;
 	
 	public Long getId() {
 		return id;
@@ -177,5 +181,23 @@ public class Inquilino {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getTempoContrato() {
+		return tempoContrato;
+	}
+
+	public void setTempoContrato(String tempoContrato) {
+		this.tempoContrato = tempoContrato;
+	}
+
+	public String getDiaVencimento() {
+		return diaVencimento;
+	}
+
+	public void setDiaVencimento(String diaVencimento) {
+		this.diaVencimento = diaVencimento;
+	}
+
+
 
 }

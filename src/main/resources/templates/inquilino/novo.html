@@ -55,7 +55,7 @@
 							<label for="nome" class="control-label">Valor</label> 
 							<input	id="phone" type="text" class="form-control" th:field="*{valorContrato}"/>
 						</div>
-						
+						<!-- 
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('dtInicioContrato')} ? has-error">
 							<label for="dtFimContrato" class="control-label">Data Inicio Contrato</label>
 							<div class='input-group date' id='dtInicioContrato'>
@@ -74,11 +74,49 @@
 								</span>
 							</div>
 						</div>
-												
-					</div>
-						<button type="submit" class="btn btn-primary">Novo</button>
+						 -->
+ 							
 				</div>
 			</div>
+		</div>
+					<div class="row">
+					<div class="col-sm-6  form-group">
+                            <label>Tempo Contrato</label>
+                            <div class="input-group">
+	                            <label class="radio-inline">
+	                            	<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1"  th:value="1"  th:field="*{tempoContrato}"/>1 Ano
+	                            </label>
+	                            <label class="radio-inline">
+	                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1"  th:value="2"  th:field="*{tempoContrato}"/>2 Ano
+	                            </label>
+	                            <label class="radio-inline">
+	                            <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" th:value="3"  th:field="*{tempoContrato}"/>3 Ano
+	                            </label>
+                            </div>
+            			</div>	
+							<div class="col-sm-6  form-group">
+                            <label>Dia de Pagamento</label>
+                            <div class="input-group">
+	                            <label class="radio-inline">
+	                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1"  th:value="5" th:field="*{diaVencimento}"/>5 
+	                            </label>
+	                            <label class="radio-inline">
+	                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" th:value="10"   th:field="*{diaVencimento}"/>10
+	                            </label>
+	                            <label class="radio-inline">
+	                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" th:value="15"   th:field="*{diaVencimento}"/>15
+	                            </label>
+                            
+								<label class="radio-inline">
+	                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" th:value="20" th:field="*{diaVencimento}"/>20
+	                            </label>
+                            </div>                            
+            			</div>
+            						</div>								
+					
+						<button type="submit" class="btn btn-primary">Novo</button>
+				
+			
 
 		</form>
 		

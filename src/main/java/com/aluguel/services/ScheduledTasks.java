@@ -35,7 +35,7 @@ public class ScheduledTasks {
 				Boolean.FALSE);
 
 		for (Despesas despesas : lista) {
-			enviaEmailCompraProduto(despesas);
+			//enviaEmailCompraProduto(despesas);
 		}
 
 		log.info("The time is now {}", dateFormat.format(new Date()));

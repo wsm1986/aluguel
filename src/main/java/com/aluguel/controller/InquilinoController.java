@@ -60,10 +60,19 @@ public class InquilinoController {
 		Despesas despesas;
 		Conta conta = contaRepository.findByDescricao(aluguel);
 
+		Calendar inicioContrato = Calendar.getInstance();
+		inicioContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
+		inquilino.setDtInicioContrato(inicioContrato);
+		
+		Calendar finalContrato = Calendar.getInstance();
+		finalContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
+		finalContrato.add(Calendar.YEAR, Integer.valueOf(inquilino.getTempoContrato()));
+		inquilino.setDtFinalContrato(finalContrato);
+
 		while (!inquilino.getDtInicioContrato().getTime().after(inquilino.getDtFinalContrato().getTime())) {
-			Calendar calendar = new GregorianCalendar(inquilino.getDtInicioContrato().get(Calendar.YEAR),
-					inquilino.getDtInicioContrato().get(Calendar.MONTH),
-					inquilino.getDtInicioContrato().get(Calendar.DAY_OF_WEEK));
+			Calendar calendar = new GregorianCalendar();
+			calendar.set(inquilino.getDtInicioContrato().get(Calendar.YEAR), inquilino.getDtInicioContrato().get(Calendar.MONTH), Integer.valueOf(inquilino.getDiaVencimento()));
+			
 			despesas = new Despesas();
 			despesas.setInquilino(inquilino);
 			despesas.setConta(conta);
