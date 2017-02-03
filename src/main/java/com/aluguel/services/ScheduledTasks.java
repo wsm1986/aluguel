@@ -29,13 +29,13 @@ public class ScheduledTasks {
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-	@Scheduled(fixedRate = 10000)
+	@Scheduled(cron = "0 00 8 * * *")
 	public void reportCurrentTime() {
 		List<Despesas> lista = (List<Despesas>) repository.findByDtVenciomentoBeforeAndIsStatus(Calendar.getInstance(),
 				Boolean.FALSE);
 
 		for (Despesas despesas : lista) {
-			//enviaEmailCompraProduto(despesas);
+			enviaEmailCompraProduto(despesas);
 		}
 
 		log.info("The time is now {}", dateFormat.format(new Date()));
@@ -45,9 +45,9 @@ public class ScheduledTasks {
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setSubject("Cobrança de Despesas");
 		email.setTo(despesas.getInquilino().getEmail());
-		email.setText(despesas.getInquilino().getNome() + "Até o momento não identificamos o Pagamento da Conta "
-				+ despesas.getConta().getDescricao() + "no Valor" + despesas.getValor());
-		System.out.println("Ta Devendo");
+		email.setText(despesas.getInquilino().getNome() + ", Até o momento não identificamos o Pagamento da Conta "
+				+ despesas.getConta().getDescricao() + " no Valor: " + despesas.getValor());
+		log.info("enviando Email de Cobrança para  {}", despesas.getInquilino().getEmail());
 		sender.send(email);
 	}
 }
