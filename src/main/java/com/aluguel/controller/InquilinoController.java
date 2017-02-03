@@ -5,9 +5,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
@@ -45,15 +48,14 @@ public class InquilinoController {
 	@RequestMapping("/form")
 	private ModelAndView cadastro(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
-		/*List<Inquilino> list = (List<Inquilino>) inquilinoRepository.findAll();
-		for (Inquilino aux : list) {
-			inquilinoRepository.delete(aux);
-		}*/
 		return mvn;
 	}
 
 	@RequestMapping("/novo")
-	private ModelAndView novo(Inquilino inquilino) {
+	private ModelAndView novo(@Valid Inquilino inquilino,BindingResult result ) {
+		if (result.hasErrors()) {
+			return cadastro(inquilino);
+		}
 		List<Despesas> lista = new ArrayList<Despesas>();
 		Despesas despesas;
 		Conta conta = contaRepository.findByDescricao(aluguel);

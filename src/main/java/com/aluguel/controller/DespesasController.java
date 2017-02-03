@@ -1,9 +1,11 @@
 package com.aluguel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,7 +65,10 @@ public class DespesasController {
 	}
 
 	@RequestMapping("/novo")
-	private ModelAndView novo(Despesas despesa, ModelMap map) {
+	private ModelAndView novo(@Valid Despesas despesa, BindingResult result) {
+		if (result.hasErrors()) {
+			return cadastro(despesa);
+		}
 		ModelAndView mvn = new ModelAndView("despesas/novo");
 		despesa.setInquilino(inquilinoRepository.findById(despesa.getInquilino().getId()));
 		despesa.setConta(dao.findById(despesa.getConta().getId()));

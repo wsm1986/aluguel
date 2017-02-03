@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,16 +22,20 @@ public class Despesas {
 	private Long id;
 
 	@OneToOne
+	@NotNull(message = "Favor Cadastrar uma Conta antes de Lançar uma Despesa")
 	private Conta Conta;
 
 	@OneToOne
+	@NotNull(message = "Favor Cadastrar um Inquilino antes de Lançar uma Despesa")
 	private Inquilino inquilino;
 
+	@NotNull(message = "valor é obrigatório")
 	private BigDecimal valor;
 
 	private Boolean isStatus;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "Data Vencimento é obrigatório")
 	private Calendar dtVenciomento;
 	
 	

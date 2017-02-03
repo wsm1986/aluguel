@@ -13,7 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -24,21 +26,27 @@ public class Inquilino {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message = "Numero da Casa é obrigatório")
 	private String numeroCasa;
 
+	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "Data Inicio é obrigatório")
 	private Calendar dtInicioContrato;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "Data Final é obrigatório")
 	private Calendar dtFinalContrato;
 
 	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Despesas> listDespesas;
 	
+	@NotNull(message = "Valor do Contrato é obrigatório")
 	private BigDecimal valorContrato;
 	
+	@NotBlank(message = "Telefone é obrigatório")
 	private String telefone;
 	
 	public Long getId() {
