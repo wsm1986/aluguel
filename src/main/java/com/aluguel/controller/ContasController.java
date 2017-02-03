@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Conta;
+import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 
 @Controller
@@ -26,6 +27,7 @@ public class ContasController {
 		ModelAndView mvn = new ModelAndView("contas/novo");
 		mvn.addObject("contas", new Conta());
 		mvn.addObject("comboContas", dao.findAll());
+		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
 		return mvn;
 	}
 

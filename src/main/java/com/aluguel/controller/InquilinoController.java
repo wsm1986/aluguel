@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
 import com.aluguel.models.Inquilino;
+import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.InquilinoRepository;
 
@@ -74,7 +75,9 @@ public class InquilinoController {
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		return new ModelAndView("redirect:form");
+		ModelAndView mav = new ModelAndView("redirect:form");
+		mav.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
+		return mav;
 	}
 
 	@RequestMapping("/lista")
