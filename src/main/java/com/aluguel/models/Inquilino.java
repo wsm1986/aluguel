@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -42,6 +43,7 @@ public class Inquilino {
 	private List<Despesas> listDespesas;
 	
 	@NotNull(message = "Valor do Contrato é obrigatório")
+	@Column(precision = 2, scale = 3)
 	private BigDecimal valorContrato;
 	
 	@NotBlank(message = "Telefone é obrigatório")

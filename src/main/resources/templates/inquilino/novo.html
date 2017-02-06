@@ -43,7 +43,7 @@
 					
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
 							<label for="nome" class="control-label">Telefone</label> 
-							<input	id="phone" type="text" class="form-control" th:field="*{telefone}" placeholder="(99) 9999-9999" />
+							<input	id="phone" type="text"   class="form-control inputmask" th:field="*{telefone}"  />
 						</div>
 						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
@@ -53,7 +53,7 @@
 						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('valorContrato')} ? has-error">
 							<label for="nome" class="control-label">Valor</label> 
-							<input	id="phone" type="text" class="form-control" th:field="*{valorContrato}"/>
+							<input	id="valor" type="text"   class="form-control money" th:field="*{valorContrato}" placeholder="R$:" />
 						</div>
 						<!-- 
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('dtInicioContrato')} ? has-error">
@@ -134,7 +134,12 @@
                     format: 'DD/MM/YYYY'
                 });
 
-             	$("#phone").mask("(99) 9999-9999");
+             	$('.inputmask').inputmask({
+             		  mask: '(99)99999-9999'
+             		})
+             		
+             	$('.money').mask('000.000.000.000.000,00', {reverse: true});    
+             			
 			  } );  
 
 			  

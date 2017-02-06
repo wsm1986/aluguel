@@ -1,5 +1,8 @@
 package com.aluguel.controller;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -8,9 +11,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
@@ -52,7 +58,7 @@ public class InquilinoController {
 	}
 
 	@RequestMapping("/novo")
-	private ModelAndView novo(@Valid Inquilino inquilino,BindingResult result ) {
+	private ModelAndView novo(@Valid Inquilino inquilino, BindingResult result) {
 		if (result.hasErrors()) {
 			return cadastro(inquilino);
 		}
@@ -63,7 +69,7 @@ public class InquilinoController {
 		Calendar inicioContrato = Calendar.getInstance();
 		inicioContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
 		inquilino.setDtInicioContrato(inicioContrato);
-		
+
 		Calendar finalContrato = Calendar.getInstance();
 		finalContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
 		finalContrato.add(Calendar.YEAR, Integer.valueOf(inquilino.getTempoContrato()));
@@ -71,8 +77,9 @@ public class InquilinoController {
 
 		while (!inquilino.getDtInicioContrato().getTime().after(inquilino.getDtFinalContrato().getTime())) {
 			Calendar calendar = new GregorianCalendar();
-			calendar.set(inquilino.getDtInicioContrato().get(Calendar.YEAR), inquilino.getDtInicioContrato().get(Calendar.MONTH), Integer.valueOf(inquilino.getDiaVencimento()));
-			
+			calendar.set(inquilino.getDtInicioContrato().get(Calendar.YEAR),
+					inquilino.getDtInicioContrato().get(Calendar.MONTH), Integer.valueOf(inquilino.getDiaVencimento()));
+
 			despesas = new Despesas();
 			despesas.setInquilino(inquilino);
 			despesas.setConta(conta);
@@ -86,7 +93,7 @@ public class InquilinoController {
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		//ModelAndView mav = new ModelAndView("redirect:form");
+		// ModelAndView mav = new ModelAndView("redirect:form");
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
 		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
 		return mvn;
@@ -107,5 +114,15 @@ public class InquilinoController {
 		String response = restTemplate.getForObject(uri, String.class);
 		System.out.println(response);
 		return mvn;
+	}
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		DecimalFormat df = new DecimalFormat();
+	    DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+	    dfs.setGroupingSeparator('.');
+	    dfs.setDecimalSeparator(',');
+	    df.setDecimalFormatSymbols(dfs);
+	    binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
 	}
 }
