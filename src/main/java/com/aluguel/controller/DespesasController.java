@@ -1,11 +1,18 @@
 package com.aluguel.controller;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,5 +81,15 @@ public class DespesasController {
 		despesa.setConta(dao.findById(despesa.getConta().getId()));
 		repository.save(despesa);
 		return mvn;
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		DecimalFormat df = new DecimalFormat();
+	    DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+	    dfs.setGroupingSeparator('.');
+	    dfs.setDecimalSeparator(',');
+	    df.setDecimalFormatSymbols(dfs);
+	    binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
 	}
 }

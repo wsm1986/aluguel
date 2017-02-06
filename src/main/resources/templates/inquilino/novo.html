@@ -9,7 +9,7 @@
 	<div th:fragment="content">
 
 
-		<form method="POST" th:object="${inquilino}" th:action="@{/inquilino/novo}">
+		<form method="POST" th:object="${inquilino}" th:action="@{/inquilino/novo}" id="form">
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">CADASTRAR INQUILINO</h1>
@@ -36,19 +36,19 @@
 
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('numeroCasa')} ? has-error">
 							<label for="nome" class="control-label">Numero Casa</label>
-							 <input	id="nome" type="text" class="form-control"
+							 <input	id="nome" type="text" class="form-control somenteNumero"
 								th:field="*{numeroCasa}" />
 		
 						</div>
 					
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
 							<label for="nome" class="control-label">Telefone</label> 
-							<input	id="phone" type="text"   class="form-control inputmask" th:field="*{telefone}"  />
+							<input	id="phone" type="text"   class="form-control inputmask" th:field="*{telefone}"  placeholder="(99) 99999-9999"  />
 						</div>
 						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
 							<label for="nome" class="control-label">Email</label> 
-							<input	id="phone" type="text" class="form-control" th:field="*{email}"/>
+							<input	id="email" type="email" class="form-control" th:field="*{email}"/>
 						</div>
 						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('valorContrato')} ? has-error">
@@ -133,13 +133,6 @@
                     locale: 'pt-br',
                     format: 'DD/MM/YYYY'
                 });
-
-             	$('.inputmask').inputmask({
-             		  mask: '(99)99999-9999'
-             		})
-             		
-             	$('.money').mask('000.000.000.000.000,00', {reverse: true});    
-             			
 			  } );  
 
 			  
