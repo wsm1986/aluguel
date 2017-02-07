@@ -50,9 +50,9 @@ public class ContasController {
 		return mvn;
 	}
 
-	@RequestMapping("/data/{id}")
-	private ModelAndView removeConta(@PathVariable("id") Long id) {
-		Conta conta = dao.findById(id);
+	@RequestMapping("/data/{conta}")
+	private ModelAndView removeConta(@PathVariable("conta") Conta conta) {
+	//	Conta conta = dao.findById(id);
 		dao.delete(conta);
 		return form(conta);
 	}

@@ -29,7 +29,7 @@ public class ScheduledTasks {
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-	@Scheduled(cron = "0 00 13 * * *")
+	@Scheduled(cron = "0 00 8 * * *")
 	public void reportCurrentTime() {
 		List<Despesas> lista = (List<Despesas>) repository.findByDtVenciomentoBeforeAndIsStatus(Calendar.getInstance(),
 				Boolean.FALSE);
