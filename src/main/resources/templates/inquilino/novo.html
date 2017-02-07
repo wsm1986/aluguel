@@ -80,7 +80,7 @@
 			</div>
 		</div>
 					<div class="row">
-					<div class="col-sm-6  form-group">
+					<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('tempoContrato')} ? has-error">
                             <label>Tempo Contrato</label>
                             <div class="input-group">
 	                            <label class="radio-inline">
@@ -94,7 +94,7 @@
 	                            </label>
                             </div>
             			</div>	
-							<div class="col-sm-6  form-group">
+							<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('diaVencimento')} ? has-error">
                             <label>Dia de Pagamento</label>
                             <div class="input-group">
 	                            <label class="radio-inline">

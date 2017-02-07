@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Conta;
+import com.aluguel.models.Despesas;
 import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 
@@ -47,5 +49,11 @@ public class ContasController {
 		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
 		return mvn;
 	}
-	
+
+	@RequestMapping("/data/{id}")
+	private ModelAndView removeConta(@PathVariable("id") Long id) {
+		Conta conta = dao.findById(id);
+		dao.delete(conta);
+		return form(conta);
+	}
 }
