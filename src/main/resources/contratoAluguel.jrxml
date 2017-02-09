@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="inquilino" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="22" width="572" height="34" forecolor="#00FFFF" backcolor="#0099FF" uuid="c7848f98-466c-4805-b69e-5831e6f0f063"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="170" y="23" width="302" height="33" uuid="d38509c8-2421-4889-9928-2082860d9c3e"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE ALUGUEL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="619" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="159" uuid="ea5c2c2c-4ad6-4767-ac13-bf340b52a9fc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[2 - LOCADORES:                                                                         , brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="1" width="284" height="20" uuid="fe8bf4cf-8ad8-43b7-83db-54d4aae58c7f"/>
+				<textFieldExpression><![CDATA[$P{inquilino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="492" y="0" width="80" height="20" uuid="82fbdf4f-586e-4197-a890-56babd368e87"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -6,21 +6,26 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
@@ -42,6 +47,9 @@ public class InquilinoController {
 
 	@Autowired
 	ContaRepository contaRepository;
+
+	@Autowired
+	private ApplicationContext appContext;
 
 	private final String aluguel = "Aluguel";
 
@@ -116,13 +124,23 @@ public class InquilinoController {
 		return mvn;
 	}
 
+	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
+	public ModelAndView getPdf() {
+		JasperReportsPdfView view = new JasperReportsPdfView();
+		view.setUrl("classpath:contratoAluguel.jrxml");
+		Map<String, Object> params = new HashMap<>();
+		params.put("inquilino", "WELLINGTON");
+		view.setApplicationContext(appContext);
+		return new ModelAndView(view, params);
+	}
+
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		DecimalFormat df = new DecimalFormat();
-	    DecimalFormatSymbols dfs = new DecimalFormatSymbols();
-	    dfs.setGroupingSeparator('.');
-	    dfs.setDecimalSeparator(',');
-	    df.setDecimalFormatSymbols(dfs);
-	    binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
+		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		dfs.setGroupingSeparator('.');
+		dfs.setDecimalSeparator(',');
+		df.setDecimalFormatSymbols(dfs);
+		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
 	}
 }
