@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" printOrder="Horizontal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="inquilino" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
+	</parameter>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -17,32 +20,112 @@
 				<textElement>
 					<font size="20"/>
 				</textElement>
-				<text><![CDATA[CONTRATO DE ALUGUEL]]></text>
+				<text><![CDATA[CONTRATO DE ALUGUEL 12]]></text>
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="619" splitType="Stretch">
+	<detail>
+		<band height="571" splitType="Immediate">
 			<staticText>
-				<reportElement x="0" y="0" width="572" height="159" uuid="ea5c2c2c-4ad6-4767-ac13-bf340b52a9fc"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="1" y="38" width="553" height="132" uuid="e8ecbf57-ebab-4cf9-9e04-b93a33d42bca"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
-				<text><![CDATA[2 - LOCADORES:                                                                         , brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.]]></text>
+				<text><![CDATA[2 - LOCADORES:                                                                                       , brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="101" y="1" width="284" height="20" uuid="fe8bf4cf-8ad8-43b7-83db-54d4aae58c7f"/>
+				<reportElement x="106" y="38" width="376" height="14" uuid="fe8bf4cf-8ad8-43b7-83db-54d4aae58c7f"/>
 				<textFieldExpression><![CDATA[$P{inquilino}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="2" y="13" width="553" height="16" uuid="6d7a7bfb-466c-412f-92f4-4f9072ea7586"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[1 - IMÓVEL – CASA Nº 61 – Rua Arara  nº 433, Vila Ayrosa, Osasco- SP  CEP: 06280-120.]]></text>
+			</staticText>
 		</band>
-	</pageHeader>
-	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="571">
+			<staticText>
+				<reportElement x="2" y="0" width="555" height="561" uuid="08d3fa19-54a8-45ed-83d6-6535a3f5ae62"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[a Cláusula 2ª. O imóvel objeto deste contrato será entregue nas condições descritas no auto de vistoria, ou seja, com instalações elétricas e hidráulicas em perfeito funcionamento, com paredes pintadas, sendo que portas, portões e acessórios se encontram também em funcionamento correto, devendo o LOCATÁRIO, mantê-lo desta forma.
+
+DO USO DO IMÓVEL
+
+       Cláusula 3ª. O imóvel em questão será utilizado pelo LOCATÁRIO no período discriminado na cláusula 5ª.
+
+       Cláusula 4ª.        Se houver algum dano ao imóvel, o LOCATÁRIO arcará, além da multa prevista, com todas as despesas oriundas da reparação do dano causado.
+
+       Cláusula 5ª. O LOCATÁRIO poderá usufruir o imóvel durante (12) Meses a contar da data de entrega das chaves pelo LOCADOR.
+
+
+       DAS BENFEITORIAS E CONSTRUÇÕES
+
+       Cláusula 6ª. Qualquer benfeitoria ou construção que seja destinada ao imóvel objeto deste, deverá, de imediato, ser submetida à autorização expressa do LOCADOR.
+
+       Cláusula 7ª. Vindo a ser feita benfeitoria, faculta ao LOCADOR aceitá-la ou não, restando ao LOCATÁRIO, em caso do LOCADOR não aceitá-la, modificar o imóvel para que fique da maneira como lhe foi entregue.
+
+       Cláusula 8ª. As benfeitorias, consertos ou reparos farão parte integrante do imóvel, não assistindo ao LOCATÁRIO o direito de retenção ou indenização sobre a mesma.
+
+DO VALOR A SER PAGO
+
+       Cláusula 9ª. Pela locação, o LOCATÁRIO pagará o valor de R$: VALOR
+
+sempre até o (_X_) de cada mês, mediante ao pagamento do valor no seguinte destino:
+
+Rua: Arara n º433 , Bairro: Vila Ayrosa, OSASCO - SP.
+
+    ]]></text>
+			</staticText>
+		</band>
+		<band height="571">
+			<staticText>
+				<reportElement x="2" y="9" width="555" height="561" uuid="e0bb750b-67c8-42b2-b7bc-ea60e6026bb0"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[1 - IMÓVEL – CASA Nº 61 – Rua Governador Carvalho Pinto nº 330 do CONDOMÍNIO  ‘RESIDENCIAL ALTOS DO BOA VISTA”, Bairro JD. Boa Vista – SP. CEP: 18132-380, dispondo de 02 vagas de garagem localizadas de fronte ao respectivo imóvel.
+
+2 - LOCADORES: MARCOS ANTONIO SOARES DA SILVA, brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.
+
+3 –LOCATÁRIOS: RODRIGO ESCARPINETE, empresário, casado, portador da Cédula de Identidade RG. nº. 33.742.023-3 – SSP/SP e inscrito no CPF-MF nº. 314.783.428-03, e sua esposa VIRGINIA RODRIGUES ALMEIDA, secretária, maior, portadora da Cédula de Identidade RG. nº. 48.095.152-4 – SSP/SP e inscrito no CPF-MF nº. 400.489.298-83.
+
+4 – DEPÓSITO CAUÇÃO: Será feito no valor de R$3.300,00 (Três mil e trezentos reais) através de depósito ou transferência bancaria na conta da Administradora (JZ IMOBILIÁRIA LTDA.), BANCO-C.E. F – AG: 0527 – OP- 003 CONTA: 0001758-0 – CNPJ: 19.813.684/0001-79; para a devida liberação das chaves do imóvel,  valor este que será usado pelo locador da melhor forma que lhe  convier, ficando acordado que o referido valor será devolvido por ocasião do encerramento deste contrato aos locatários,  corrigido pela poupança  e se nenhuma clausula deste contrato for infringida.
+
+5 -0 = PERIODO CONTRATADO 30 MESES:
+5 – 1 = INÍCIO: 08 / 08/ 2015
+5 – 2 = TÉRMINO = 07 / 02 / 2018
+
+6 -0 = VALOR DO ALUGUEL MENSAL = R$1.100,00(Hum mil e cem reais).
+6 - 1 =VENCIMENTO: Todo dia 10 de cada mês, sendo o 1º vencimento em 10/09/2015 e os demais subsequentemente a cada 30 d/d.
+
+7- I P T U – 100% das parcelas mensais (valor á ser informado)
+
+8- TAXA DE CONDOMÍNIO (valor á ser informado)
+
+9-  0 = REAJUSTE  – IGPM/PGV (Índice Geral de Preços da Fundação Getúlio Vargas)
+9 – 1 = Periodicidade = 12 meses
+
+10 - DESTINAÇÃO DO IMÓVEL: Para fim estritamente residencial dos Locatários.
+
+11 – FORO ELEITO = Comarca de São Roque - SP
+
+12 – LOCAL E DATA = São Roque, 06 de Agosto de 2015.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
 			<textField>
-				<reportElement x="492" y="0" width="80" height="20" uuid="82fbdf4f-586e-4197-a890-56babd368e87"/>
+				<reportElement x="417" y="0" width="80" height="20" uuid="f296853d-6c53-40ae-9a5c-3d3c7b40a120"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="497" y="0" width="40" height="20" uuid="1b516dad-69d1-4b46-9660-e49a2122c9f8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
-	</pageFooter>
+	</columnFooter>
 </jasperReport>
