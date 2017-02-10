@@ -59,7 +59,7 @@ public class DespesasController {
 	private ModelAndView getFindInquilino(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("despesas/lista");
 		mvn.addObject("inquilino", new Inquilino());
-		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
+		//inquilino = inquilinoRepository.findByNome(inquilino.getNome());
 		//mvn.addObject("listDespesas", inquilino.getListDespesas());
 		return mvn;
 	}

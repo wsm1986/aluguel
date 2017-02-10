@@ -39,7 +39,7 @@ import com.aluguel.repository.InquilinoRepository;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 @RequestMapping("/inquilino")
 public class InquilinoController {
-
+/*
 	@Autowired
 	RestTemplate restTemplate = new RestTemplate();
 
@@ -159,5 +159,5 @@ public class InquilinoController {
 		dfs.setDecimalSeparator(',');
 		df.setDecimalFormatSymbols(dfs);
 		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
-	}
+	}*/
 }
