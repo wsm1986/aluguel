@@ -34,6 +34,16 @@
 								id="nome" type="text" class="form-control" th:field="*{nome}" />
 						</div>
 
+						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('rg')} ? has-error">
+							<label for="nome" class="control-label">R.G</label> 
+							<input	id="valor" type="text"   class="form-control money" th:field="*{rg}" placeholder="R$:" />
+						</div>
+						
+						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
+							<label for="nome" class="control-label">CPF</label> 
+							<input	id="valor" type="text"   class="form-control money" th:field="*{cpf}" placeholder="R$:" />
+						</div>
+
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('numeroCasa')} ? has-error">
 							<label for="nome" class="control-label">Numero Casa</label>
 							 <input	id="nome" type="text" class="form-control somenteNumero"
@@ -115,7 +125,6 @@
             						</div>								
 					
 						<button type="submit" class="btn btn-primary">Novo</button>
-						<a th:href="${(#mvc.url('IC#getPdf')).build()}" class="fa fa-trash-o fa-fw  " >LLL</a>
 				
 			
 
