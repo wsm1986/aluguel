@@ -44,10 +44,10 @@ public class ScheduledTasks {
 	private void enviaEmailCompraProduto(Despesas despesas) {
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setSubject("Cobrança de Despesas");
-		email.setTo(despesas.getInquilino().getEmail());
+		/*email.setTo(despesas.getInquilino().getEmail());
 		email.setText(despesas.getInquilino().getNome() + ", Até o momento não identificamos o Pagamento da Conta "
 				+ despesas.getConta().getDescricao() + " no Valor: " + despesas.getValor());
-		log.info("enviando Email de Cobrança para  {}", despesas.getInquilino().getEmail());
+		log.info("enviando Email de Cobrança para  {}", despesas.getInquilino().getEmail());*/
 		sender.send(email);
 	}
 }
