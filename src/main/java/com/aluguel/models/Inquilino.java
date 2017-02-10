@@ -60,10 +60,10 @@ public class Inquilino {
 	private String diaVencimento;
 	
 	@NotBlank(message = "RG é Obrigatorio")
-	private Long rg;
+	private String rg;
 	
 	@NotBlank(message = "CPF é Obrigatorio")
-	private Long cpf;
+	private String cpf;
 	
 	public Long getId() {
 		return id;
@@ -207,19 +207,19 @@ public class Inquilino {
 		this.diaVencimento = diaVencimento;
 	}
 
-	public Long getRg() {
+	public String getRg() {
 		return rg;
 	}
 
-	public void setRg(Long rg) {
+	public void setRg(String rg) {
 		this.rg = rg;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
