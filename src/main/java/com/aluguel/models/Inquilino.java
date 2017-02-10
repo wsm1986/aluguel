@@ -59,6 +59,12 @@ public class Inquilino {
 	@NotBlank(message = "Selecione o melhor dia para pagamento")
 	private String diaVencimento;
 	
+	@NotBlank(message = "RG é Obrigatorio")
+	private Long rg;
+	
+	@NotBlank(message = "CPF é Obrigatorio")
+	private Long cpf;
+	
 	public Long getId() {
 		return id;
 	}
@@ -199,6 +205,22 @@ public class Inquilino {
 
 	public void setDiaVencimento(String diaVencimento) {
 		this.diaVencimento = diaVencimento;
+	}
+
+	public Long getRg() {
+		return rg;
+	}
+
+	public void setRg(Long rg) {
+		this.rg = rg;
+	}
+
+	public Long getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
 
 

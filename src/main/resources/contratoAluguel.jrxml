@@ -1,131 +1,448 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" printOrder="Horizontal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="inquilino" class="java.lang.String"/>
+	<parameter name="nome_inquilino" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="rg_inquilino" class="java.lang.String"/>
+	<parameter name="cpf_inquilino" class="java.lang.String"/>
+	<parameter name="valor_contrato" class="java.lang.String"/>
+	<parameter name="nome_locador" class="java.lang.String"/>
+	<parameter name="rg_locador" class="java.lang.String"/>
+	<parameter name="cpf_locador" class="java.lang.String"/>
+	<parameter name="desc_valor_contrato" class="java.lang.String"/>
+	<parameter name="dt_inicio_contrato" class="java.lang.String"/>
+	<parameter name="dt_final_contrato" class="java.lang.String"/>
+	<parameter name="valor_deposito" class="java.lang.String"/>
+	<parameter name="desc_valor_deposito" class="java.lang.String"/>
+	<parameter name="dia_vencimento" class="java.lang.String"/>
+	<parameter name="tempo_contrato" class="java.lang.String"/>
+	<group name="Pag2">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="607">
+				<staticText>
+					<reportElement x="0" y="238" width="572" height="26" uuid="624e2757-3bea-412e-905e-a62fa8f1b9af"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[6 -0 = VALOR DO ALUGUEL MENSAL = R$_________________________________________________________________
+6 - 1 =VENCIMENTO: Todo dia _____ de cada mês.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="117" width="572" height="65" uuid="ff6402c8-bf70-4949-b235-3f8825ef41c0"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[4 – DEPÓSITO CAUÇÃO: Será feito no valor de R$__________________________________
+(___________________________________________________) através de depósito ou em Dinheiro; para a devida liberação das chaves do imóvel,  valor este que será usado pelo locador da melhor forma que lhe  convier, ficando acordado que o referido valor será devolvido por ocasião do encerramento deste contrato aos locatários,  corrigido pela poupança  e se nenhuma clausula deste contrato for infringida.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="189" width="572" height="48" uuid="9a1f806b-01a7-4f96-a930-080af0f1f860"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[5 -0 = PERIODO CONTRATADO ____ MESES:
+5 – 1 = INÍCIO: _________________________
+5 – 2 = TÉRMINO = _____________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="3" width="572" height="14" uuid="80ac9335-163d-4d8f-8f19-c3b526b318fc"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[1 - IMÓVEL – CASA – Rua Arara  nº 433 , Bairro: Vila Ayrosa – Osasco – SP.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="269" width="572" height="14" uuid="086c4086-1ebc-4516-987d-33e0038ccedc"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[7 - DESTINAÇÃO DO IMÓVEL: Para fim estritamente residencial dos Locatários.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="289" width="572" height="28" uuid="0414b316-ed62-499c-91e4-8038eef404ee"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[INSTRUMENTO PARTICULAR DE CONTRATO DE LOCAÇÃO DE
+IMÓVEL PARA FINS RESIDENCIAIS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="328" width="572" height="52" uuid="ef865bb4-c365-45b4-9821-01f266818b82"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[AS PARTES, ACIMA NOMEADAS E QUALIFICADAS, TÊM ENTRE SI, JUSTO E ACERTADO, O PRESENTE CONTRATO DE LOCAÇÃO RESIDENCIAL QUE SE REGERÁ PELAS DISPOSIÇÕES DA LEI 8.245 DE 18/10/1991 E LEGISLAÇÃO COMPLEMENTAR, APLICANDO-SE NO QUE COUBEREM AS DISPOSIÇÕES DO CÓDIGO CIVIL, MEDIANTE AS CLÁUSULAS E CONDIÇÕES A SEGUIR ENUMERADAS QUE SE OBRIGAM, MUTUAMENTE, A CUMPRIR E RESPEITAR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="390" width="572" height="52" uuid="8a87a4b8-1db8-4eb2-8e0b-fce4a0449a69"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 1ª.  O imóvel objeto deste contrato será entregue nas condições descritas no auto de vistoria, ou seja, com instalações elétricas e hidráulicas em perfeito funcionamento, com paredes pintadas, sendo que portas, portões e acessórios se encontram também em funcionamento correto, devendo o LOCATÁRIO, mantê-lo desta forma.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="443" width="572" height="39" uuid="918cba5e-a6d7-471c-a303-b5fb021c16df"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 3ª.  Se houver algum dano ao imóvel, o LOCATÁRIO arcará, além da multa prevista, com todas as despesas oriundas da reparação do dano causado.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="482" width="572" height="51" uuid="8f6709b5-a31c-4e54-bd45-b0c319eb2bd0"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 4ª.  Qualquer benfeitoria ou construção que seja destinada ao imóvel objeto deste, deverá, de imediato, ser submetida à autorização expressa do LOCADOR.Vindo a ser feita benfeitoria, faculta ao LOCADOR aceitá-la ou não, restando ao LOCATÁRIO, em caso do LOCADOR não aceitá-la, modificar o imóvel para que fique da maneira como lhe foi entregue]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="545" width="572" height="29" uuid="f7c0fc01-0cf2-496b-a42b-0744d074f64c"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 5ª.  As benfeitorias, consertos ou reparos farão parte integrante do imóvel, não assistindo ao LOCATÁRIO o direito de retenção ou indenização sobre a mesma.
+       ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="316" y="23" width="241" height="20" uuid="922b8ac8-c78e-442c-b4bb-e71065ca62ea"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[RG:______________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="40" width="319" height="24" uuid="b1963edb-b675-4572-9a56-7b82a93f6240"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[CPF: __________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="70" width="315" height="14" uuid="682c612d-4d77-4e0a-bf9f-2dce85b63258"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[3 - LOCATARIO: __________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="22" width="315" height="17" uuid="d9cb6c5b-fd32-4817-9cf3-048b2df96ff8"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[2 - LOCADOR: ____________________________________________]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="85" y="22" width="201" height="18" uuid="d2fcdcf8-d97c-43c4-8da0-dc7756951c79"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nome_locador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="337" y="23" width="158" height="20" uuid="70f26942-daf8-45d4-92a6-55a4da1f5120"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{rg_locador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="44" y="40" width="188" height="20" uuid="3143134b-9607-496a-a3e0-7a01c907aed8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{cpf_locador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="70" width="198" height="20" uuid="3d707eca-32d8-45ef-ac9c-0cffe1d8558d"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nome_inquilino}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="337" y="72" width="158" height="20" uuid="0d36f0fe-ebe7-4dee-92a7-0a4d292aafa1"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{rg_inquilino}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="51" y="92" width="186" height="20" uuid="efc1815e-4377-4f96-91ef-7902ac48d21e"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{cpf_inquilino}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="224" y="236" width="173" height="20" uuid="74b48db4-bfa1-4c8e-95cb-6dcbb0d3b54e"/>
+					<textFieldExpression><![CDATA[$P{valor_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="336" y="236" width="150" height="20" uuid="93e096b2-0917-4ba8-a411-b63bc22faf5c"/>
+					<textFieldExpression><![CDATA[$P{desc_valor_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="78" y="200" width="157" height="20" uuid="8c3ec419-e1a6-4fd8-a2c8-b64be42dbf23"/>
+					<textFieldExpression><![CDATA[$P{dt_inicio_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="103" y="213" width="150" height="20" uuid="95d02a69-7b7a-4bc1-ba40-c38973e6b626"/>
+					<textFieldExpression><![CDATA[$P{dt_final_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="256" y="116" width="180" height="20" uuid="1e40c1fe-54df-46f6-9c50-a41c8aa08382"/>
+					<textFieldExpression><![CDATA[$P{valor_deposito}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="3" y="127" width="281" height="20" uuid="c4c4376c-a16c-47d8-8980-b349dd2190b3"/>
+					<textFieldExpression><![CDATA[$P{desc_valor_deposito}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="160" y="249" width="20" height="20" uuid="5f806c51-b0b9-49fb-a18a-4418d4f31def"/>
+					<textFieldExpression><![CDATA[$P{dia_vencimento}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="17" y="92" width="319" height="24" uuid="a1417acc-2474-4bf1-a593-dbfc11a66f37"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[CPF: __________________________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="317" y="72" width="241" height="20" uuid="ac5d5e5e-3e37-443c-adc8-3c72b6f9e53c"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[RG:______________________________________]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="160" y="189" width="22" height="20" uuid="74b805e0-46a3-457f-9cf8-d6b16a0992a9"/>
+					<textFieldExpression><![CDATA[$P{tempo_contrato}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Pag3">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="697">
+				<staticText>
+					<reportElement x="1" y="2" width="572" height="40" uuid="e05f9847-3833-420a-bec7-b5de794453f6"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Parágrafo único. Ocorrendo atraso no pagamento do aluguel, o LOCATÁRIO deverá pagar uma multa de (10)%, calculada sobre o valor do aluguel mais (1)% mora dia.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="43" width="572" height="29" uuid="06ef32c7-8ea4-4c99-bb77-dc617832a854"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 6ª.  O valor do aluguel será reajustado anualmente, tendo como base, os índices previstos e acumulados no período anual, por exemplo, (IGPM ou IGP ou IPC, etc.) ou, em caso de falta deste índice, o reajustamento do aluguel terá por base a média da variação dos índices inflacionários do ano corrente ao da execução do aluguel, até o primeiro dia anterior ao pagamento do aluguel. ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="70" width="572" height="40" uuid="ea50a2bf-c7f8-44f9-adaa-39ea892ee359"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Parágrafo único. Ocorrendo alguma mudança no âmbito governamental, todos os valores agregados ao aluguel, bem como o próprio aluguel, serão revistos pelas partes.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="116" width="572" height="47" uuid="f8a0ed22-aa1b-4f41-9f86-bcd7adf4d011"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 7ª.  O LOCATÁRIO se compromete ainda a efetuar em dia o pagamento dos encargos tributários que incidam ou venham a incidir sobre o imóvel, bem como todas as despesas ligadas direta ou indiretamente com a conservação do imóvel, tais como água, luz, telefone, condomínio, etc.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="162" width="572" height="16" uuid="b64fcc9e-f636-4509-86aa-15f1ecf795d3"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DAS OBRIGAÇÕES DO LOCADOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="182" width="572" height="14" uuid="95cc84a3-a09c-4b88-9173-4d36e9545c73"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 8ª.  O LOCADOR deverá entregar as chaves ao LOCATÁRIO no dia da assinatura deste contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="201" width="572" height="14" uuid="77c01d9a-2cb8-428e-8985-482256668127"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 9ª.  O LOCADOR afirma estar o imóvel em perfeitas condições de uso, como comprovado mediante termo de vistoria.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="239" width="572" height="14" uuid="282d77ea-7e5c-403f-8b9f-0c262f80b786"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 10ª.  Durante o período de vigência do presente contrato, o LOCATÁRIO será totalmente responsável pela guarda e manutenção do imóvel.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="218" width="572" height="16" uuid="e91e305d-1ec6-4095-a334-46285d986545"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DAS OBRIGAÇÕES DO LOCATÁRIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="260" width="572" height="28" uuid="9eca5b39-423b-47cd-9502-934b65085963"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 11ª. O LOCATÁRIO deverá administrar, cuidar da limpeza, da ordem e da conservação do imóvel, entregando-o nas mesmas condições dispostas no termo de vistoria em anexo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="293" width="572" height="44" uuid="3e797248-43e8-44f9-aaf9-d6336f791a52"/>
+					<textElement textAlignment="Justified">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[     Parágrafo único. Caso o inquilino não zele pelo imóvel, causando-lhe qualquer dano, deverá arcar com as despesas necessárias e à reparação do mesmo, sem prejuízo do pagamento da multa de R$ 500,00(Quinhentos Reais).]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="334" width="572" height="44" uuid="f249c466-7d87-4d6f-bcfc-2cb2b4fdffaf"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 12ª.  É vedado ao LOCATÁRIO a troca do segredo das fechaduras. A ocorrência de qualquer evento que torne necessária a troca de tal segredo deverá ser imediatamente comunicado ao LOCADOR, cuja autorização expressa é imprescindível para que se efetue aludida troca de segredo.
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="380" width="572" height="26" uuid="d5dd4e78-9aac-43c2-8770-9be9cb0122da"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 13ª.  O LOCATÁRIO se compromete a desocupar o imóvel no prazo de 5 dias após o término da locação, devolvendo as chaves ao LOCADOR.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="415" width="572" height="43" uuid="2e50135e-41dc-4cf2-8a0f-bb1f26d611b9"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 14ª.  A quantidade de pessoas a residirem no imóvel alem do locatário é de _____, pessoas, sendo que caso seja quebrada essa clausula o contrato será anulado e o responsável devera entregar o imóvel imediatamente.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="486" width="572" height="18" uuid="d31db3c9-1be8-449c-a37b-64657567997b"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nome:__________________________________________________________RG:____________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="511" width="572" height="18" uuid="f6471a8c-bd77-406b-80af-aaeffbc22058"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nome:__________________________________________________________RG:____________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="462" width="572" height="18" uuid="300bb24d-c6cb-47b9-b3b0-bad9e16a5412"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nome:__________________________________________________________RG:____________________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="535" width="572" height="13" uuid="b09d7a18-724b-4907-9a6e-678851fea528"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Cláusula 15ª.  Não é permitido nenhum animal de estimação.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="552" width="572" height="44" uuid="fd326f38-a240-4f45-ba70-a6e90733112c"/>
+					<textElement textAlignment="Justified">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Parágrafo único. Caso permaneça no imóvel após o prazo determinado no caput da presente cláusula, o LOCATÁRIO pagará multa de R$ 15,00 (quinze Reais) por dia em que permanecer em posse do imóvel e respectivas chaves.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="596" width="572" height="34" uuid="b40c9fa6-02a1-4a38-b259-bb880cfe0cd9"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 16ª.  O locatário se compromete a desocupar o imóvel no prazo de 5 dias após o termino do contrato, devolvendo a chave ao locador.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="651" width="572" height="43" uuid="fefd6084-d4c2-4640-beea-d96fb4ce2a75"/>
+					<textElement textAlignment="Justified">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Parágrafo único. Somente será considerado rescindido o presente contrato após a efetiva entrega das chaves pelo LOCATÁRIO, cumpridas todas as obrigações e encargos estabelecidos neste instrumento. ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="630" width="572" height="21" uuid="088da6b4-1497-4d12-9250-31c343e9c083"/>
+					<textElement textAlignment="Justified">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[DO PRAZO]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="697">
+				<staticText>
+					<reportElement x="1" y="10" width="572" height="20" uuid="e8369a8e-b1f7-41b8-9ed2-74aab4a58c08"/>
+					<textElement textAlignment="Justified">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[DA CONDIÇÃO GERAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="30" width="572" height="43" uuid="f9ee2a87-5a64-48af-9e4d-4ebdec20a88d"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[	Cláusula 17ª.  O LOCATÁRIO não poderá, sem expressa autorização do LOCADOR, emprestar ou sublocar o imóvel bem como os móveis a terceiros.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="103" width="572" height="113" uuid="b98edecf-42d8-45e1-b113-378f9b7fa1fb"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[1 - O Quintal deverá ser lavado 1(uma) vez por mês no mínimo por cada inquilino.
+2 - Não é permitido som alto em nenhum momento do dia.
+3 - O lixo deverá ser colocado somente na frente da residência, nos dias que o lixeiro passar (TERÇA,QUINTA,SABADO) e somente no período noturno.
+4 - Não é permitido colocar varal nas paredes, pois a mesma já conte, caso precise de mais varal  é permitido varão de chão e o mesmo deverá ficar na frente da residência do mesmo.
+
+Caso alguma das observações acima não seja cumprida o Locador poderá Solicitar a desocupação imediata do imóvel.
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="1" y="75" width="572" height="20" forecolor="#F02F2F" backcolor="#FFFFFF" uuid="04e61898-66a2-432b-916f-ad698ffd9ffa"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ATENÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="216" width="572" height="25" uuid="9ea55605-a34c-480e-83c0-68439d08d17f"/>
+					<textElement textAlignment="Justified">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[	Cláusula 18ª.  Por estarem assim justos e contratados, firmam o presente instrumento, em duas vias de igual teor, juntamente com 2 (duas) testemunhas.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="259" width="572" height="54" uuid="9a796da9-2482-43aa-a0b4-736ca3a91a47"/>
+					<textElement textAlignment="Justified">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Parágrafo único.  RESCISÃO CONTRATUAL
+Fica estabelecida a multa equivalente a 02(três) meses de alugueres vigente a época da infração contratual cometida, pagamento este que deverá ser efetuado pela parte infratora, com a faculdade para a parte inocente de poder considerar rescindida simultaneamente a]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="313" width="572" height="41" uuid="a92fc370-6aa7-4c2e-8998-849b87c268c1"/>
+					<textElement textAlignment="Justified">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[
+Parágrafo único.  PRORROGAÇÃO
+Findo o presente contrato, caso a locação venha a ser prorrogada por tempo indeterminado, permanecerão em vigor todas as cláusulas contratuais e será negociado o novo valor do aluguel.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="367" width="572" height="54" uuid="0ae9dea0-18af-449b-b52a-2183acb4fe86"/>
+					<textElement textAlignment="Justified">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ASSIM, POR SE ACHAREM DE PLENO E COMUM ACORDO, ASSINAM AS PARTES O PRESENTE INSTRUMENTO PARTICULAR DE LOCAÇÃO E, RUBRICAM TODAS AS PAGINAS EM 03 (TRÊS) VIAS DE IGUAL TEOR, NA PRESENÇA DE 02 (DUAS) TESTEMUNHAS, A FIM DE QUE SURTA SEUS JURÍDICOS E LEGAIS EFEITOS.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="551" width="572" height="18" uuid="e9eb3d85-03a1-4136-bbe4-fa3f85bb52d1"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nome:_________________________________________________________ASSINATURA:____________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="518" width="572" height="20" uuid="b17ce433-88a8-4fc8-af4c-ca81b2150eef"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[LOCATÁRIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="450" width="572" height="20" uuid="934d3ea1-d61d-4c7d-bbbd-0823d015410d"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[LOCADOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="473" width="572" height="18" uuid="0b065f52-c0b6-4aa8-91e6-fecca45f71c3"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nome:_________________________________________________________ASSINATURA:____________________________]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="22" width="572" height="34" forecolor="#00FFFF" backcolor="#0099FF" uuid="c7848f98-466c-4805-b69e-5831e6f0f063"/>
+				<reportElement x="0" y="0" width="572" height="33" forecolor="#D3D3D3" backcolor="#D3D3D3" uuid="c7848f98-466c-4805-b69e-5831e6f0f063"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="170" y="23" width="302" height="33" uuid="d38509c8-2421-4889-9928-2082860d9c3e"/>
-				<textElement>
-					<font size="20"/>
+				<reportElement x="125" y="5" width="301" height="21" uuid="d38509c8-2421-4889-9928-2082860d9c3e"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
 				</textElement>
-				<text><![CDATA[CONTRATO DE ALUGUEL 12]]></text>
+				<text><![CDATA[CONTRATO DE ALUGUEL ]]></text>
 			</staticText>
 		</band>
 	</title>
-	<detail>
-		<band height="571" splitType="Immediate">
-			<staticText>
-				<reportElement x="1" y="38" width="553" height="132" uuid="e8ecbf57-ebab-4cf9-9e04-b93a33d42bca"/>
-				<textElement textAlignment="Justified">
-					<font fontName="SansSerif" size="12"/>
-				</textElement>
-				<text><![CDATA[2 - LOCADORES:                                                                                       , brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="106" y="38" width="376" height="14" uuid="fe8bf4cf-8ad8-43b7-83db-54d4aae58c7f"/>
-				<textFieldExpression><![CDATA[$P{inquilino}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="2" y="13" width="553" height="16" uuid="6d7a7bfb-466c-412f-92f4-4f9072ea7586"/>
-				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1 - IMÓVEL – CASA Nº 61 – Rua Arara  nº 433, Vila Ayrosa, Osasco- SP  CEP: 06280-120.]]></text>
-			</staticText>
-		</band>
-		<band height="571">
-			<staticText>
-				<reportElement x="2" y="0" width="555" height="561" uuid="08d3fa19-54a8-45ed-83d6-6535a3f5ae62"/>
-				<textElement textAlignment="Justified">
-					<font size="12" isBold="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[a Cláusula 2ª. O imóvel objeto deste contrato será entregue nas condições descritas no auto de vistoria, ou seja, com instalações elétricas e hidráulicas em perfeito funcionamento, com paredes pintadas, sendo que portas, portões e acessórios se encontram também em funcionamento correto, devendo o LOCATÁRIO, mantê-lo desta forma.
-
-DO USO DO IMÓVEL
-
-       Cláusula 3ª. O imóvel em questão será utilizado pelo LOCATÁRIO no período discriminado na cláusula 5ª.
-
-       Cláusula 4ª.        Se houver algum dano ao imóvel, o LOCATÁRIO arcará, além da multa prevista, com todas as despesas oriundas da reparação do dano causado.
-
-       Cláusula 5ª. O LOCATÁRIO poderá usufruir o imóvel durante (12) Meses a contar da data de entrega das chaves pelo LOCADOR.
-
-
-       DAS BENFEITORIAS E CONSTRUÇÕES
-
-       Cláusula 6ª. Qualquer benfeitoria ou construção que seja destinada ao imóvel objeto deste, deverá, de imediato, ser submetida à autorização expressa do LOCADOR.
-
-       Cláusula 7ª. Vindo a ser feita benfeitoria, faculta ao LOCADOR aceitá-la ou não, restando ao LOCATÁRIO, em caso do LOCADOR não aceitá-la, modificar o imóvel para que fique da maneira como lhe foi entregue.
-
-       Cláusula 8ª. As benfeitorias, consertos ou reparos farão parte integrante do imóvel, não assistindo ao LOCATÁRIO o direito de retenção ou indenização sobre a mesma.
-
-DO VALOR A SER PAGO
-
-       Cláusula 9ª. Pela locação, o LOCATÁRIO pagará o valor de R$: VALOR
-
-sempre até o (_X_) de cada mês, mediante ao pagamento do valor no seguinte destino:
-
-Rua: Arara n º433 , Bairro: Vila Ayrosa, OSASCO - SP.
-
-    ]]></text>
-			</staticText>
-		</band>
-		<band height="571">
-			<staticText>
-				<reportElement x="2" y="9" width="555" height="561" uuid="e0bb750b-67c8-42b2-b7bc-ea60e6026bb0"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[1 - IMÓVEL – CASA Nº 61 – Rua Governador Carvalho Pinto nº 330 do CONDOMÍNIO  ‘RESIDENCIAL ALTOS DO BOA VISTA”, Bairro JD. Boa Vista – SP. CEP: 18132-380, dispondo de 02 vagas de garagem localizadas de fronte ao respectivo imóvel.
-
-2 - LOCADORES: MARCOS ANTONIO SOARES DA SILVA, brasileiro, portador da Cédula de Identidade RG. nº. 24.578.153-5 – SSP/SP e inscrito no CPF-MF nº. 164.131.018-90, residente e domiciliado á Av.Com. Antunes dos Santos, nº 07 – Jardim Lídia – Santo Amaro – SP. Neste ato representado pelo seu procurador o Sr. JOSÉ AUGUSTO VILA CHÃ DE CASTRO, brasileiro, maior, comerciante, portador da Cédula de Identidade RG. nº 24.886.813-5 – SSP/SP e inscrito no CPF-MF nº. 248.710.458-97, Residente e domiciliado á Rua Santa Madalena, nº 85 – Jd. Villaça – São Roque – SP, CEP: 18135-430.
-
-3 –LOCATÁRIOS: RODRIGO ESCARPINETE, empresário, casado, portador da Cédula de Identidade RG. nº. 33.742.023-3 – SSP/SP e inscrito no CPF-MF nº. 314.783.428-03, e sua esposa VIRGINIA RODRIGUES ALMEIDA, secretária, maior, portadora da Cédula de Identidade RG. nº. 48.095.152-4 – SSP/SP e inscrito no CPF-MF nº. 400.489.298-83.
-
-4 – DEPÓSITO CAUÇÃO: Será feito no valor de R$3.300,00 (Três mil e trezentos reais) através de depósito ou transferência bancaria na conta da Administradora (JZ IMOBILIÁRIA LTDA.), BANCO-C.E. F – AG: 0527 – OP- 003 CONTA: 0001758-0 – CNPJ: 19.813.684/0001-79; para a devida liberação das chaves do imóvel,  valor este que será usado pelo locador da melhor forma que lhe  convier, ficando acordado que o referido valor será devolvido por ocasião do encerramento deste contrato aos locatários,  corrigido pela poupança  e se nenhuma clausula deste contrato for infringida.
-
-5 -0 = PERIODO CONTRATADO 30 MESES:
-5 – 1 = INÍCIO: 08 / 08/ 2015
-5 – 2 = TÉRMINO = 07 / 02 / 2018
-
-6 -0 = VALOR DO ALUGUEL MENSAL = R$1.100,00(Hum mil e cem reais).
-6 - 1 =VENCIMENTO: Todo dia 10 de cada mês, sendo o 1º vencimento em 10/09/2015 e os demais subsequentemente a cada 30 d/d.
-
-7- I P T U – 100% das parcelas mensais (valor á ser informado)
-
-8- TAXA DE CONDOMÍNIO (valor á ser informado)
-
-9-  0 = REAJUSTE  – IGPM/PGV (Índice Geral de Preços da Fundação Getúlio Vargas)
-9 – 1 = Periodicidade = 12 meses
-
-10 - DESTINAÇÃO DO IMÓVEL: Para fim estritamente residencial dos Locatários.
-
-11 – FORO ELEITO = Comarca de São Roque - SP
-
-12 – LOCAL E DATA = São Roque, 06 de Agosto de 2015.]]></text>
-			</staticText>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="50">
-			<textField>
-				<reportElement x="417" y="0" width="80" height="20" uuid="f296853d-6c53-40ae-9a5c-3d3c7b40a120"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="497" y="0" width="40" height="20" uuid="1b516dad-69d1-4b46-9660-e49a2122c9f8"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="12" splitType="Stretch"/>
+	</columnHeader>
+	<noData>
+		<band height="50"/>
+	</noData>
 </jasperReport>

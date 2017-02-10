@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
@@ -122,14 +123,30 @@ public class InquilinoController {
 		String response = restTemplate.getForObject(uri, String.class);
 		System.out.println(response);
 		return mvn;
+		
 	}
 
-	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
-	public ModelAndView getPdf() {
+	@RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
+	public ModelAndView imprimirPdf(@PathVariable("id") Long id) {
+		Inquilino inquilino = inquilinoRepository.findById(id);
 		JasperReportsPdfView view = new JasperReportsPdfView();
 		view.setUrl("classpath:contratoAluguel.jrxml");
 		Map<String, Object> params = new HashMap<>();
-		params.put("inquilino", "WELLINGTON");
+		params.put("nome_inquilino",String.valueOf(inquilino.getNome()));
+		params.put("rg_inquilino",String.valueOf(inquilino.getRg()));
+		params.put("cpf_inquilino",String.valueOf(inquilino.getCpf()));
+		params.put("valor_contrato",String.valueOf(inquilino.getValorContrato()));
+		params.put("nome_locador","Wellington de Sousa Moreira");
+		params.put("rg_locador","29.878.588-2");
+		params.put("cpf_locador","333.550.188-80");
+		params.put("desc_valor_contrato","Quinhentos e cinquenta reais");
+		params.put("dt_inicio_contrato", inquilino.getDtInicioConverter());
+		params.put("dt_final_contrato",inquilino.getDtFinalConverter());
+		params.put("valor_deposito", "R$: 1100,00");
+		params.put("desc_valor_deposito","Mil e Cem Reais");
+		params.put("dia_vencimento", String.valueOf(inquilino.getDiaVencimento()));
+		params.put("tempo_contrato", String.valueOf(inquilino.getTempoContrato()));
+		
 		view.setApplicationContext(appContext);
 		return new ModelAndView(view, params);
 	}

@@ -33,7 +33,7 @@
                                         <th>Fim Contrato</th>
                                         <th>Valor</th>
                                         
-                                        <th>excluir</th>
+                                        <th>Gerar Contrato</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +45,7 @@
 										<td th:text="${#calendars.format(lista.dtFinalContrato, 'dd/MMM/yyyy')}">1</td>
 										<td >1</td>
 										<td class="remove-item">
+												<a th:href="${(#mvc.url('IC#imprimirPdf').arg(0,lista.id)).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>    
 											 <!--<a th:href="${(#mvc.url('IC#getData').arg(0,lista.id)).build()}" class="fa fa-trash-o fa-fw  " ></a> -->
 										
 				      					</td>
