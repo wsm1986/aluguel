@@ -39,8 +39,8 @@ public class Inquilino {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
-	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Despesas> listDespesas;
+	/*@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	private List<Despesas> listDespesas;*/
 	
 	@NotNull(message = "Valor do Contrato é obrigatório")
 	@Column(precision = 2, scale = 3)
@@ -148,7 +148,7 @@ public class Inquilino {
 			e.printStackTrace();
 		}
 	}
-
+/*
 	public List<Despesas> getListDespesas() {
 		return listDespesas;
 	}
@@ -156,7 +156,7 @@ public class Inquilino {
 	public void setListDespesas(List<Despesas> listDespesas) {
 		this.listDespesas = listDespesas;
 	}
-
+*/
 	public String getTelefone() {
 		return telefone;
 	}

@@ -90,7 +90,7 @@ public class InquilinoController {
 					inquilino.getDtInicioContrato().get(Calendar.MONTH), Integer.valueOf(inquilino.getDiaVencimento()));
 
 			despesas = new Despesas();
-			despesas.setInquilino(inquilino);
+			//despesas.setInquilino(inquilino);
 			despesas.setConta(conta);
 			despesas.setDtVenciomento(calendar);
 			despesas.setIsStatus(Boolean.FALSE);
@@ -100,7 +100,7 @@ public class InquilinoController {
 
 		}
 
-		inquilino.setListDespesas(lista);
+		//inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
 		// ModelAndView mav = new ModelAndView("redirect:form");
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
