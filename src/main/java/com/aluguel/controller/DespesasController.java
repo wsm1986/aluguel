@@ -60,7 +60,7 @@ public class DespesasController {
 		ModelAndView mvn = new ModelAndView("despesas/lista");
 		mvn.addObject("inquilino", new Inquilino());
 		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
-		mvn.addObject("listDespesas", inquilino.getListDespesas());
+		//mvn.addObject("listDespesas", inquilino.getListDespesas());
 		return mvn;
 	}
 	@RequestMapping("/data/{status}/{id}")
@@ -77,7 +77,7 @@ public class DespesasController {
 			return cadastro(despesa);
 		}
 		ModelAndView mvn = new ModelAndView("despesas/novo");
-		despesa.setInquilino(inquilinoRepository.findById(despesa.getInquilino().getId()));
+		//despesa.setInquilino(inquilinoRepository.findById(despesa.getInquilino().getId()));
 		despesa.setConta(dao.findById(despesa.getConta().getId()));
 		repository.save(despesa);
 		return mvn;
