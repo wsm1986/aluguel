@@ -2,11 +2,11 @@ package com.aluguel.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.aluguel.models.Inquilino2;
+import com.aluguel.models.AInquilino;
 
-public interface InquilinoRepository extends CrudRepository<Inquilino2, Long>{
-	Inquilino2 findByNome(String nome);
-	Inquilino2 findById(Long id);
+public interface InquilinoRepository extends CrudRepository<AInquilino, Long>{
+	AInquilino findByNome(String nome);
+	AInquilino findById(Long id);
 	
 }
 

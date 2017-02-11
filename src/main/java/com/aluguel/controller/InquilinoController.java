@@ -30,7 +30,7 @@ import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
 import com.aluguel.models.Conta;
 import com.aluguel.models.Despesas;
-import com.aluguel.models.Inquilino2;
+import com.aluguel.models.AInquilino;
 import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.InquilinoRepository;
@@ -61,13 +61,13 @@ public class InquilinoController {
 	}
 
 	@RequestMapping("/form")
-	private ModelAndView cadastro(Inquilino2 inquilino) {
+	private ModelAndView cadastro(AInquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
 		return mvn;
 	}
 
 	@RequestMapping("/novo")
-	private ModelAndView novo(@Valid Inquilino2 inquilino, BindingResult result) {
+	private ModelAndView novo(@Valid AInquilino inquilino, BindingResult result) {
 		if (result.hasErrors()) {
 			return cadastro(inquilino);
 		}
@@ -102,7 +102,7 @@ public class InquilinoController {
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		// ModelAndView mav = new ModelAndView("redirect:form");
+		 ModelAndView mav = new ModelAndView("redirect:form");
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
 		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
 		return mvn;
@@ -128,7 +128,7 @@ public class InquilinoController {
 
 	@RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
 	public ModelAndView imprimirPdf(@PathVariable("id") Long id) {
-		Inquilino2 inquilino = inquilinoRepository.findById(id);
+		AInquilino inquilino = inquilinoRepository.findById(id);
 		JasperReportsPdfView view = new JasperReportsPdfView();
 		view.setUrl("classpath:contratoAluguel.jrxml");
 		Map<String, Object> params = new HashMap<>();
