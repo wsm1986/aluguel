@@ -42,7 +42,7 @@ public class Inquilino {
 	private List<Despesas> listDespesas;
 
 	@NotNull(message = "Valor do Contrato é obrigatório")
-	@Column(precision = 2, scale = 3)
+//	@Column(precision = 2, scale = 3)
 	private BigDecimal valorContrato;
 
 	@NotBlank(message = "Telefone é obrigatório")
