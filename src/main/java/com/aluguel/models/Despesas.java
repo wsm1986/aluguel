@@ -25,6 +25,9 @@ public class Despesas {
 	@NotNull(message = "Favor Cadastrar uma Conta antes de Lançar uma Despesa")
 	private Conta Conta;
 
+	@OneToOne
+	@NotNull(message = "Favor Cadastrar um Inquilino antes de Lançar uma Despesa")
+	private Inquilino inquilino;
 
 	@NotNull(message = "valor é obrigatório")
 	private BigDecimal valor;
@@ -79,6 +82,13 @@ public class Despesas {
 		this.dtVenciomento = dtVenciomento;
 	}
 
+	public Inquilino getInquilino() {
+		return inquilino;
+	}
+
+	public void setInquilino(Inquilino inquilino) {
+		this.inquilino = inquilino;
+	}
 	public String getDtConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		return sdf.format(dtVenciomento == null ? new Date() : dtVenciomento.getTime());
@@ -94,6 +104,14 @@ public class Despesas {
 			e.printStackTrace();
 		}
 
+	}
+
+	public Long getIdInquilino() {
+		return new Inquilino().getId();
+	}
+
+	public void setIdInquilino(Long idInquilino) {
+		this.setInquilino(new Inquilino(idInquilino));
 	}
 	
 	public Long getIdConta() {

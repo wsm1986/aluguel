@@ -4,11 +4,16 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -33,9 +38,11 @@ public class Inquilino {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
+	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	private List<Despesas> listDespesas;
 
 	@NotNull(message = "Valor do Contrato é obrigatório")
-	//@Column(precision = 2, scale = 3)
+	@Column(precision = 2, scale = 3)
 	private BigDecimal valorContrato;
 
 	@NotBlank(message = "Telefone é obrigatório")
@@ -142,6 +149,13 @@ public class Inquilino {
 		}
 	}
 
+	public List<Despesas> getListDespesas() {
+		return listDespesas;
+	}
+
+	public void setListDespesas(List<Despesas> listDespesas) {
+		this.listDespesas = listDespesas;
+	}
 
 	public String getTelefone() {
 		return telefone;
