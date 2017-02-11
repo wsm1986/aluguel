@@ -111,7 +111,7 @@ public class InquilinoController {
 	@RequestMapping("/lista")
 	private ModelAndView inquilinos() {
 		ModelAndView mvn = new ModelAndView("inquilino/lista");
-		mvn.addObject("listInquilino", inquilinoRepository.findAll());
+		mvn.addObject("listaInquilino", inquilinoRepository.findAll());
 		return mvn;
 	}
 
