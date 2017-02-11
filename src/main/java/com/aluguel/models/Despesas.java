@@ -27,7 +27,7 @@ public class Despesas {
 
 	@OneToOne
 	@NotNull(message = "Favor Cadastrar um Inquilino antes de Lançar uma Despesa")
-	private AInquilino inquilino;
+	private Inquilino inquilino;
 
 	@NotNull(message = "valor é obrigatório")
 	private BigDecimal valor;
@@ -82,11 +82,11 @@ public class Despesas {
 		this.dtVenciomento = dtVenciomento;
 	}
 
-	public AInquilino getInquilino() {
+	public Inquilino getInquilino() {
 		return inquilino;
 	}
 
-	public void setInquilino(AInquilino inquilino) {
+	public void setInquilino(Inquilino inquilino) {
 		this.inquilino = inquilino;
 	}
 	public String getDtConverter() {
@@ -107,11 +107,11 @@ public class Despesas {
 	}
 
 	public Long getIdInquilino() {
-		return new AInquilino().getId();
+		return new Inquilino().getId();
 	}
 
 	public void setIdInquilino(Long idInquilino) {
-		this.setInquilino(new AInquilino(idInquilino));
+		this.setInquilino(new Inquilino(idInquilino));
 	}
 	
 	public Long getIdConta() {

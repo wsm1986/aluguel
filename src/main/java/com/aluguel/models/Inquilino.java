@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class AInquilino {
+public class Inquilino {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -103,10 +103,10 @@ public class AInquilino {
 		this.dtFinalContrato = dtFinalContrato;
 	}
 
-	public AInquilino() {
+	public Inquilino() {
 	}
 
-	public AInquilino(String numeroCasa, String nome, Calendar dtInicioContrato,
+	public Inquilino(String numeroCasa, String nome, Calendar dtInicioContrato,
 			Calendar dtFinalContrato) {
 		this.numeroCasa = numeroCasa;
 		this.nome = nome;
@@ -178,7 +178,7 @@ public class AInquilino {
 		this.valorContrato = valorContrato;
 	}
 
-	public AInquilino(Long id) {
+	public Inquilino(Long id) {
 		this.id = id;
 	}
 
