@@ -19,14 +19,10 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
 public class Inquilino2 {
 
-   
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "Numero da Casa é obrigatório")
 	private String numeroCasa;
 
@@ -39,40 +35,39 @@ public class Inquilino2 {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dtFinalContrato;
 
-	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy = "inquilino", fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	private List<Despesas> listDespesas;
-	
+
 	@NotNull(message = "Valor do Contrato é obrigatório")
 	@Column(precision = 2, scale = 3)
 	private BigDecimal valorContrato;
-	
+
 	@NotBlank(message = "Telefone é obrigatório")
 	private String telefone;
-	
+
 	@NotBlank(message = "Email é obrigatório")
 	private String email;
-	
+
 	@NotBlank(message = "Tempo de Contrato é obrigatório")
 	private String tempoContrato;
-	
+
 	@NotBlank(message = "Selecione o melhor dia para pagamento")
 	private String diaVencimento;
-	
+
 	@NotBlank(message = "RG é Obrigatorio")
 	private String rg;
-	
+
 	@NotBlank(message = "CPF é Obrigatorio")
 	private String cpf;
-	
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	} 
-	
-	
+	}
+
 	public String getNumeroCasa() {
 		return numeroCasa;
 	}
@@ -108,17 +103,18 @@ public class Inquilino2 {
 	public Inquilino2() {
 	}
 
-	public Inquilino2(String numeroCasa, String nome, Calendar dtInicioContrato, Calendar dtFinalContrato) {
+	public Inquilino2(String numeroCasa, String nome,
+			Calendar dtInicioContrato, Calendar dtFinalContrato) {
 		this.numeroCasa = numeroCasa;
 		this.nome = nome;
 		this.dtInicioContrato = dtInicioContrato;
 		this.dtFinalContrato = dtFinalContrato;
 	}
 
-
 	public String getDtInicioConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-		return sdf.format(dtInicioContrato  == null ? new Date() : dtInicioContrato.getTime());
+		return sdf.format(dtInicioContrato == null ? new Date()
+				: dtInicioContrato.getTime());
 	}
 
 	public void setDtInicioConverter(String dtInicioConverter) {
@@ -135,7 +131,8 @@ public class Inquilino2 {
 
 	public String getDtFinalConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-		return sdf.format(dtFinalContrato == null ? new Date() : dtFinalContrato.getTime());
+		return sdf.format(dtFinalContrato == null ? new Date()
+				: dtFinalContrato.getTime());
 	}
 
 	public void setDtFinalConverter(String dtFinalConverter) {
@@ -221,7 +218,5 @@ public class Inquilino2 {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-
 
 }
