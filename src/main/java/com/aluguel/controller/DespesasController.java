@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aluguel.models.Despesas;
-import com.aluguel.models.Inquilino;
+import com.aluguel.models.Inquilino2;
 import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.DespesasRepository;
 import com.aluguel.repository.InquilinoRepository;
@@ -50,15 +50,15 @@ public class DespesasController {
 	@RequestMapping("/pesquisa")
 	private ModelAndView despesas() {
 		ModelAndView mvn = new ModelAndView("despesas/lista");
-		mvn.addObject("inquilino", new Inquilino());
+		mvn.addObject("inquilino", new Inquilino2());
 		mvn.addObject("listDespesas", repository.findAll());
 		return mvn;
 	}
 	
 	@RequestMapping(value = "/find", method = RequestMethod.POST)
-	private ModelAndView getFindInquilino(Inquilino inquilino) {
+	private ModelAndView getFindInquilino(Inquilino2 inquilino) {
 		ModelAndView mvn = new ModelAndView("despesas/lista");
-		mvn.addObject("inquilino", new Inquilino());
+		mvn.addObject("inquilino", new Inquilino2());
 		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
 		mvn.addObject("listDespesas", inquilino.getListDespesas());
 		return mvn;
