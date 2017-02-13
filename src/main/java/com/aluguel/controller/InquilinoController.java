@@ -34,6 +34,9 @@ import com.aluguel.models.Inquilino;
 import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.InquilinoRepository;
+import com.aluguel.services.AdministratorService;
+
+import domain.Locador;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
@@ -75,20 +78,19 @@ public class InquilinoController {
 		Despesas despesas;
 		Conta conta = contaRepository.findByDescricao(aluguel);
 
-		Calendar inicioContrato = Calendar.getInstance();
-		inicioContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
-		inquilino.setDtInicioContrato(inicioContrato);
+		Calendar dtAux = Calendar.getInstance();
+		dtAux.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
+
+		inquilino.setDtInicioContrato(Calendar.getInstance());
 
 		Calendar finalContrato = Calendar.getInstance();
-		finalContrato.add(Calendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
 		finalContrato.add(Calendar.YEAR, Integer.valueOf(inquilino.getTempoContrato()));
 		inquilino.setDtFinalContrato(finalContrato);
 
-		while (!inquilino.getDtInicioContrato().getTime().after(inquilino.getDtFinalContrato().getTime())) {
+		while (!dtAux.getTime().after(inquilino.getDtFinalContrato().getTime())) {
 			Calendar calendar = new GregorianCalendar();
-			calendar.set(inquilino.getDtInicioContrato().get(Calendar.YEAR),
-					inquilino.getDtInicioContrato().get(Calendar.MONTH), Integer.valueOf(inquilino.getDiaVencimento()));
-
+			calendar.set(dtAux.get(Calendar.YEAR), dtAux.get(Calendar.MONTH), 0);
+			calendar.set(GregorianCalendar.DAY_OF_MONTH, Integer.valueOf(inquilino.getDiaVencimento()));
 			despesas = new Despesas();
 			despesas.setInquilino(inquilino);
 			despesas.setConta(conta);
@@ -96,14 +98,14 @@ public class InquilinoController {
 			despesas.setIsStatus(Boolean.FALSE);
 			despesas.setValor(inquilino.getValorContrato());
 			lista.add(despesas);
-			inquilino.getDtInicioContrato().add(Calendar.MONTH, 1);
+			dtAux.add(Calendar.MONTH, 1);
 
 		}
 
 		inquilino.setListDespesas(lista);
 		inquilinoRepository.save(inquilino);
-		 ModelAndView mav = new ModelAndView("redirect:form");
 		ModelAndView mvn = new ModelAndView("inquilino/novo");
+		inquilino = new Inquilino();
 		mvn.addObject(MessageWeb.MESSAGE_ATTRIBUTE, MessageWeb.SUCCESS_ALTER);
 		return mvn;
 	}
@@ -123,30 +125,32 @@ public class InquilinoController {
 		String response = restTemplate.getForObject(uri, String.class);
 		System.out.println(response);
 		return mvn;
-		
+
 	}
 
 	@RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
 	public ModelAndView imprimirPdf(@PathVariable("id") Long id) {
 		Inquilino inquilino = inquilinoRepository.findById(id);
+		Locador locador = new AdministratorService().getLocador();
+
 		JasperReportsPdfView view = new JasperReportsPdfView();
 		view.setUrl("classpath:contratoAluguel.jrxml");
 		Map<String, Object> params = new HashMap<>();
-		params.put("nome_inquilino",String.valueOf(inquilino.getNome()));
-		params.put("rg_inquilino",String.valueOf(inquilino.getRg()));
-		params.put("cpf_inquilino",String.valueOf(inquilino.getCpf()));
-		params.put("valor_contrato",String.valueOf(inquilino.getValorContrato()));
-		params.put("nome_locador","Wellington de Sousa Moreira");
-		params.put("rg_locador","29.878.588-2");
-		params.put("cpf_locador","333.550.188-80");
-		params.put("desc_valor_contrato","Quinhentos e cinquenta reais");
+		params.put("nome_inquilino", String.valueOf(inquilino.getNome()));
+		params.put("rg_inquilino", String.valueOf(inquilino.getRg()));
+		params.put("cpf_inquilino", String.valueOf(inquilino.getCpf()));
+		params.put("valor_contrato", String.valueOf(inquilino.getValorContrato()));
+		params.put("nome_locador", String.valueOf(locador.getNome()));
+		params.put("rg_locador",String.valueOf( locador.getRg()));
+		params.put("cpf_locador", String.valueOf(locador.getCpf()));
+		params.put("desc_valor_contrato", "");
 		params.put("dt_inicio_contrato", inquilino.getDtInicioConverter());
-		params.put("dt_final_contrato",inquilino.getDtFinalConverter());
-		params.put("valor_deposito", "R$: 1100,00");
-		params.put("desc_valor_deposito","Mil e Cem Reais");
+		params.put("dt_final_contrato", inquilino.getDtFinalConverter());
+		params.put("valor_deposito", String.valueOf(inquilino.getValorContrato().multiply(new BigDecimal(2))));
+		params.put("desc_valor_deposito", "");
 		params.put("dia_vencimento", String.valueOf(inquilino.getDiaVencimento()));
 		params.put("tempo_contrato", String.valueOf(inquilino.getTempoContrato()));
-		
+
 		view.setApplicationContext(appContext);
 		return new ModelAndView(view, params);
 	}

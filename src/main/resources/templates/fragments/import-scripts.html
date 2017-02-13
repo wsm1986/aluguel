@@ -22,8 +22,10 @@
 <![endif]-->
 
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-<script type="text/javascript" th:src="@{/webjars/momentjs/min/moment-with-locales.js}"></script>
-<script type="text/javascript" th:src="@{/webjars/Eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/momentjs/min/moment-with-locales.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/Eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/jasny-bootstrap.js}"></script>
 <script type="text/javascript" th:src="@{/js/jasny-bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
@@ -42,6 +44,10 @@
                     var expre = /[^\d]/g;
                     $(this).val($(this).val().replace(expre,''));
                });
+
+             	$(".rg").mask("99.999.999-9",{placeholder:" "});
+
+             	$(".cpf").mask("999.999.999-99",{placeholder:" "});    
              			
 			  } );  
 

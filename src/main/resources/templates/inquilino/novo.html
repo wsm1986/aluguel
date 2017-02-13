@@ -36,12 +36,12 @@
 
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('rg')} ? has-error">
 							<label for="nome" class="control-label">R.G</label> 
-							<input	id="rg" type="text"   class="form-control" th:field="*{rg}" />
+							<input	id="rg" type="text"   class="form-control rg" th:field="*{rg}" />
 						</div>
 						
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
 							<label for="nome" class="control-label">CPF</label> 
-							<input	id="cpf" type="text"   class="form-control" th:field="*{cpf}" />
+							<input	id="cpf" type="text"   class="form-control cpf" th:field="*{cpf}" />
 						</div>
 
 						<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('numeroCasa')} ? has-error">
