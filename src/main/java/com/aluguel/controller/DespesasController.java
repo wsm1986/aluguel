@@ -121,9 +121,10 @@ public class DespesasController {
 	}
 
 	@RequestMapping("/sendEmail/{id}")
-	private void sendComprovante(@PathVariable("id") Long id) {
+	private ModelAndView sendComprovante(@PathVariable("id") Long id) {
 		Despesas despesas = repository.findById(id);
 		sender.enviaComprovante(despesas);
+		return despesas();
 	}
 
 }
