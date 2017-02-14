@@ -108,17 +108,21 @@
 		</band>
 	</title>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="89" splitType="Stretch">
 			<staticText>
-				<reportElement x="184" y="28" width="336" height="20" uuid="ee39d653-cbaa-42d8-bd6b-625d3e6f305c"/>
+				<reportElement x="184" y="58" width="336" height="20" uuid="ee39d653-cbaa-42d8-bd6b-625d3e6f305c"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Assinatura do Proprietario, Locador ou Responsável]]></text>
 			</staticText>
 			<line>
-				<reportElement x="126" y="20" width="420" height="1" uuid="771174c5-7452-48ba-bf3b-7bdc9f42b908"/>
+				<reportElement x="126" y="50" width="420" height="1" uuid="771174c5-7452-48ba-bf3b-7bdc9f42b908"/>
 			</line>
+			<image>
+				<reportElement x="209" y="22" width="311" height="28" uuid="db28ee15-b249-4f68-87bc-30f2a134b8bf"/>
+				<imageExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/static/imagens/assinatura.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageFooter>
 </jasperReport>
