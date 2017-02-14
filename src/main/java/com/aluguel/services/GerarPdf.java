@@ -42,7 +42,7 @@ public class GerarPdf {
 		params.put("cpf_inquilino", String.valueOf(despesas.getInquilino().getCpf()));
 		params.put("valor_pago", String.valueOf(despesas.getValor()));
 		params.put("cidade", String.valueOf("Osasco"));
-		params.put("data_pagamento", new Date());
+		params.put("data_pagamento", despesas.getDtVenciomento().getTime());
 		return params;
 	}
 }
