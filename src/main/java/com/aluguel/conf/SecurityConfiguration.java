@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/inquilino/lista").hasRole("ADMIN")
 				.antMatchers("/static/**").permitAll()
+				.antMatchers("/despesas/imprimir/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

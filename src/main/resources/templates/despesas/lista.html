@@ -44,6 +44,7 @@
                                         <th>Valor</th>
                                         <th>Status</th>
                                         <th>Alterar</th>
+                                        <th>Gerar Comprovante</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +55,7 @@
 										<td th:text="${lista.valor}">1</td>
 										<td th:text="${lista.isStatus}">1</td>
 										<td >	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,false).arg(1,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
+										<td >	<a th:href="${(#mvc.url('DC#sendComprovante').arg(0,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
 										
                                     </tr>
                                     
@@ -64,6 +66,7 @@
 										<td th:text="${lista.valor}">1</td>
 										<td th:text="${lista.isStatus}">1</td>
         								<td>	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,true).arg(1,lista.id)).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>  </td>
+        								<td></td>
         								
 										
                                     </tr>

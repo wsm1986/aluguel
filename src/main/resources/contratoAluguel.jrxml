@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2633"/>
+	<property name="ireport.y" value="377"/>
 	<parameter name="nome_inquilino" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
@@ -174,7 +174,7 @@ IMÓVEL PARA FINS RESIDENCIAIS]]></text>
 					<textFieldExpression><![CDATA[$P{desc_valor_deposito}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="160" y="249" width="20" height="20" uuid="5f806c51-b0b9-49fb-a18a-4418d4f31def"/>
+					<reportElement x="157" y="249" width="20" height="15" uuid="5f806c51-b0b9-49fb-a18a-4418d4f31def"/>
 					<textFieldExpression><![CDATA[$P{dia_vencimento}]]></textFieldExpression>
 				</textField>
 				<staticText>
@@ -350,14 +350,7 @@ Caso alguma das observações acima não seja cumprida o Locador poderá Solicit
 					<text><![CDATA[ATENÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="310" width="572" height="25" uuid="9ea55605-a34c-480e-83c0-68439d08d17f"/>
-					<textElement textAlignment="Justified">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<text><![CDATA[	Cláusula 18ª.  Por estarem assim justos e contratados, firmam o presente instrumento, em duas vias de igual teor, juntamente com 2 (duas) testemunhas.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="1" y="340" width="572" height="54" uuid="9a796da9-2482-43aa-a0b4-736ca3a91a47"/>
+					<reportElement x="1" y="316" width="572" height="54" uuid="9a796da9-2482-43aa-a0b4-736ca3a91a47"/>
 					<textElement textAlignment="Justified">
 						<font size="10" isBold="true"/>
 					</textElement>
@@ -365,7 +358,7 @@ Caso alguma das observações acima não seja cumprida o Locador poderá Solicit
 Fica estabelecida a multa equivalente a 02(três) meses de alugueres vigente a época da infração contratual cometida, pagamento este que deverá ser efetuado pela parte infratora, com a faculdade para a parte inocente de poder considerar rescindida simultaneamente a]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="398" width="572" height="41" uuid="a92fc370-6aa7-4c2e-8998-849b87c268c1"/>
+					<reportElement x="1" y="376" width="572" height="41" uuid="a92fc370-6aa7-4c2e-8998-849b87c268c1"/>
 					<textElement textAlignment="Justified">
 						<font size="10" isBold="true"/>
 					</textElement>
@@ -374,33 +367,33 @@ Parágrafo único.  PRORROGAÇÃO
 Findo o presente contrato, caso a locação venha a ser prorrogada por tempo indeterminado, permanecerão em vigor todas as cláusulas contratuais e será negociado o novo valor do aluguel.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="444" width="572" height="54" uuid="0ae9dea0-18af-449b-b52a-2183acb4fe86"/>
+					<reportElement x="1" y="421" width="572" height="54" uuid="0ae9dea0-18af-449b-b52a-2183acb4fe86"/>
 					<textElement textAlignment="Justified">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[ASSIM, POR SE ACHAREM DE PLENO E COMUM ACORDO, ASSINAM AS PARTES O PRESENTE INSTRUMENTO PARTICULAR DE LOCAÇÃO E, RUBRICAM TODAS AS PAGINAS EM 03 (TRÊS) VIAS DE IGUAL TEOR, NA PRESENÇA DE 02 (DUAS) TESTEMUNHAS, A FIM DE QUE SURTA SEUS JURÍDICOS E LEGAIS EFEITOS.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="584" width="572" height="18" uuid="e9eb3d85-03a1-4136-bbe4-fa3f85bb52d1"/>
+					<reportElement x="1" y="559" width="572" height="18" uuid="e9eb3d85-03a1-4136-bbe4-fa3f85bb52d1"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Nome:_________________________________________________________ASSINATURA:____________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="554" width="572" height="20" uuid="b17ce433-88a8-4fc8-af4c-ca81b2150eef"/>
+					<reportElement x="1" y="536" width="572" height="20" uuid="b17ce433-88a8-4fc8-af4c-ca81b2150eef"/>
 					<textElement textAlignment="Center">
 						<font isBold="true"/>
 					</textElement>
 					<text><![CDATA[LOCATÁRIO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="514" width="572" height="20" uuid="934d3ea1-d61d-4c7d-bbbd-0823d015410d"/>
+					<reportElement x="0" y="487" width="572" height="20" uuid="934d3ea1-d61d-4c7d-bbbd-0823d015410d"/>
 					<textElement textAlignment="Center">
 						<font isBold="true"/>
 					</textElement>
 					<text><![CDATA[LOCADOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="532" width="572" height="18" uuid="0b065f52-c0b6-4aa8-91e6-fecca45f71c3"/>
+					<reportElement x="1" y="508" width="572" height="18" uuid="0b065f52-c0b6-4aa8-91e6-fecca45f71c3"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Nome:_________________________________________________________ASSINATURA:____________________________]]></text>
 				</staticText>
@@ -412,19 +405,19 @@ Findo o presente contrato, caso a locação venha a ser prorrogada por tempo ind
 					<text><![CDATA[Parágrafo único. Somente será considerado rescindido o presente contrato após a efetiva entrega das chaves pelo LOCATÁRIO, cumpridas todas as obrigações e encargos estabelecidos neste instrumento. ]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="3" y="614" width="572" height="20" uuid="f53efa41-c3eb-47b4-baa7-3dec24e17d97"/>
+					<reportElement x="3" y="595" width="572" height="20" uuid="f53efa41-c3eb-47b4-baa7-3dec24e17d97"/>
 					<textElement textAlignment="Center">
 						<font isBold="true"/>
 					</textElement>
 					<text><![CDATA[TESTEMUNHAS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="3" y="637" width="572" height="18" uuid="c55141c9-4542-4aae-a68f-21ae2f3cff6c"/>
+					<reportElement x="3" y="618" width="572" height="18" uuid="c55141c9-4542-4aae-a68f-21ae2f3cff6c"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Nome:____________________________________RG:__________________ASSINATURA:____________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="3" y="665" width="572" height="18" uuid="9d59d131-ddc7-4ab7-b3e2-6c096bd87d85"/>
+					<reportElement x="3" y="646" width="572" height="18" uuid="9d59d131-ddc7-4ab7-b3e2-6c096bd87d85"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Nome:____________________________________RG:__________________ASSINATURA:____________________________]]></text>
 				</staticText>

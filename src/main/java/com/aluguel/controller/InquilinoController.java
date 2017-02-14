@@ -6,9 +6,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -34,9 +32,7 @@ import com.aluguel.models.Inquilino;
 import com.aluguel.models.MessageWeb;
 import com.aluguel.repository.ContaRepository;
 import com.aluguel.repository.InquilinoRepository;
-import com.aluguel.services.AdministratorService;
-
-import domain.Locador;
+import com.aluguel.services.GerarPdf;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
@@ -54,6 +50,9 @@ public class InquilinoController {
 
 	@Autowired
 	private ApplicationContext appContext;
+	
+	@Autowired
+	private GerarPdf gerarpdf;
 
 	private final String aluguel = "Aluguel";
 
@@ -131,28 +130,10 @@ public class InquilinoController {
 	@RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
 	public ModelAndView imprimirPdf(@PathVariable("id") Long id) {
 		Inquilino inquilino = inquilinoRepository.findById(id);
-		Locador locador = new AdministratorService().getLocador();
-
 		JasperReportsPdfView view = new JasperReportsPdfView();
 		view.setUrl("classpath:contratoAluguel.jrxml");
-		Map<String, Object> params = new HashMap<>();
-		params.put("nome_inquilino", String.valueOf(inquilino.getNome()));
-		params.put("rg_inquilino", String.valueOf(inquilino.getRg()));
-		params.put("cpf_inquilino", String.valueOf(inquilino.getCpf()));
-		params.put("valor_contrato", String.valueOf(inquilino.getValorContrato()));
-		params.put("nome_locador", String.valueOf(locador.getNome()));
-		params.put("rg_locador",String.valueOf( locador.getRg()));
-		params.put("cpf_locador", String.valueOf(locador.getCpf()));
-		params.put("desc_valor_contrato", "");
-		params.put("dt_inicio_contrato", inquilino.getDtInicioConverter());
-		params.put("dt_final_contrato", inquilino.getDtFinalConverter());
-		params.put("valor_deposito", String.valueOf(inquilino.getValorContrato().multiply(new BigDecimal(2))));
-		params.put("desc_valor_deposito", "");
-		params.put("dia_vencimento", String.valueOf(inquilino.getDiaVencimento()));
-		params.put("tempo_contrato", String.valueOf(inquilino.getTempoContrato()));
-
 		view.setApplicationContext(appContext);
-		return new ModelAndView(view, params);
+		return new ModelAndView(view,gerarpdf.contratoAluguel(inquilino));
 	}
 
 	@InitBinder

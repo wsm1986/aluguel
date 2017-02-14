@@ -8,7 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ public class ScheduledTasks {
 	DespesasRepository repository;
 
 	@Autowired
-	private MailSender sender;
+	private EnviarEmail sender;
 
 	private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
@@ -34,19 +34,11 @@ public class ScheduledTasks {
 				Boolean.FALSE);
 
 		for (Despesas despesas : lista) {
-			enviaEmailCompraProduto(despesas);
+			sender.enviaEmailCobranca(despesas);
 		}
 
 		log.info("The time is now {}", dateFormat.format(new Date()));
 	}
 
-	private void enviaEmailCompraProduto(Despesas despesas) {
-		/*SimpleMailMessage email = new SimpleMailMessage();
-		email.setSubject("Cobrança de Despesas");
-		email.setTo(despesas.getInquilino().getEmail());
-		email.setText(despesas.getInquilino().getNome() + ", Até o momento não identificamos o Pagamento da Conta "
-				+ despesas.getConta().getDescricao() + " no Valor: " + despesas.getValor());
-		log.info("enviando Email de Cobrança para  {}", despesas.getInquilino().getEmail());
-		sender.send(email);
-	}*/}
+	
 }
