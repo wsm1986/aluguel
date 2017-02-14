@@ -108,8 +108,11 @@ public class DespesasController {
 	}
 
 	@RequestMapping("/imprimir/{id}")
-	private ModelAndView imprimirPdf(@PathVariable("id") Long id) {
+	private ModelAndView imprimirPdf(@PathVariable("id") Long id) throws Exception {
 		Despesas despesas = repository.findById(id);
+		if(!despesas.getIsStatus()){
+			throw new Exception("Conta não esta Paga");
+		}
 		JasperReportsPdfView view = new JasperReportsPdfView();
 		view.setUrl("classpath:comprovantePagamento.jrxml");
 		view.setApplicationContext(appContext);
