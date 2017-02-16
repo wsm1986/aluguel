@@ -1,7 +1,6 @@
 package com.aluguel.services;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +15,8 @@ import domain.Locador;
 public class GerarPdf {
 
 	public Map<String, Object> contratoAluguel(Inquilino inquilino) {
-		Locador locador = new AdministratorService().getLocador();
+		// Locador locador = new AdministratorService().getLocador();
+		Locador locador = new Locador("Luiza Antonia de Sousa Moreira", "16.600.418", "049.576.598-85");
 		Map<String, Object> params = new HashMap<>();
 		params.put("nome_inquilino", String.valueOf(inquilino.getNome()));
 		params.put("rg_inquilino", String.valueOf(inquilino.getRg()));
