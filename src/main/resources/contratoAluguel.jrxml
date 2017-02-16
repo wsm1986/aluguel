@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="377"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="nome_inquilino" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
@@ -20,6 +20,7 @@
 	<parameter name="desc_valor_deposito" class="java.lang.String"/>
 	<parameter name="dia_vencimento" class="java.lang.String"/>
 	<parameter name="tempo_contrato" class="java.lang.String"/>
+	<parameter name="endereco_casa" class="java.lang.String"/>
 	<group name="Pag2">
 		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
 		<groupHeader>
@@ -46,7 +47,7 @@
 				<staticText>
 					<reportElement x="0" y="3" width="572" height="14" uuid="80ac9335-163d-4d8f-8f19-c3b526b318fc"/>
 					<textElement textAlignment="Justified"/>
-					<text><![CDATA[1 - IMÓVEL – CASA – Rua Arara  nº 433 , Bairro: Vila Ayrosa – Osasco – SP.]]></text>
+					<text><![CDATA[1 - IMÓVEL – __________________________________________________________________________________________]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="0" y="269" width="572" height="14" uuid="086c4086-1ebc-4516-987d-33e0038ccedc"/>

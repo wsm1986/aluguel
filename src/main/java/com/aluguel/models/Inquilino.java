@@ -132,7 +132,7 @@ public class Inquilino {
 	}
 
 	public String getDtFinalConverter() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		return sdf.format(dtFinalContrato == null ? new Date()
 				: dtFinalContrato.getTime());
 	}
