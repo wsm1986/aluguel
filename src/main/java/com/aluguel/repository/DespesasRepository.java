@@ -7,9 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.aluguel.models.Despesas;
 
-public interface DespesasRepository extends CrudRepository<Despesas, Long>{
-	
+public interface DespesasRepository extends CrudRepository<Despesas, Long> {
+
 	Despesas findById(Long id);
-	
+
 	List<Despesas> findByDtVenciomentoBeforeAndIsStatus(Calendar dt, Boolean status);
+
+	Boolean deleteById(Long id);
 }

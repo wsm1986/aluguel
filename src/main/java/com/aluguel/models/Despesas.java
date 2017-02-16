@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +27,7 @@ public class Despesas {
 	@NotNull(message = "Favor Cadastrar uma Conta antes de Lançar uma Despesa")
 	private Conta Conta;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@NotNull(message = "Favor Cadastrar um Inquilino antes de Lançar uma Despesa")
 	private Inquilino inquilino;
 
@@ -37,8 +39,7 @@ public class Despesas {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@NotNull(message = "Data Vencimento é obrigatório")
 	private Calendar dtVenciomento;
-	
-	
+
 	public Despesas() {
 	}
 
@@ -89,6 +90,7 @@ public class Despesas {
 	public void setInquilino(Inquilino inquilino) {
 		this.inquilino = inquilino;
 	}
+
 	public String getDtConverter() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		return sdf.format(dtVenciomento == null ? new Date() : dtVenciomento.getTime());
@@ -113,7 +115,7 @@ public class Despesas {
 	public void setIdInquilino(Long idInquilino) {
 		this.setInquilino(new Inquilino(idInquilino));
 	}
-	
+
 	public Long getIdConta() {
 		return new Conta().getId();
 	}

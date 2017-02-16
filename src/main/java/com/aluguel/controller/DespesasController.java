@@ -72,16 +72,26 @@ public class DespesasController {
 	private ModelAndView getFindInquilino(Inquilino inquilino) {
 		ModelAndView mvn = new ModelAndView("despesas/lista");
 		mvn.addObject("inquilino", new Inquilino());
-		inquilino = inquilinoRepository.findByNome(inquilino.getNome());
+		if (inquilino.getNome().isEmpty()) {
+			return despesas();
+		}
+		inquilino = inquilinoRepository.findByNomeContaining(inquilino.getNome());
 		mvn.addObject("listDespesas", inquilino.getListDespesas());
 		return mvn;
 	}
 
-	@RequestMapping("/data/{status}/{id}")
-	private ModelAndView getUpdateStatus(@PathVariable("status") Boolean status, @PathVariable("id") Long id) {
+	@RequestMapping("/update/{status}/{id}")
+	private ModelAndView updateStatus(@PathVariable("status") Boolean status, @PathVariable("id") Long id) {
 		Despesas despesas = repository.findById(id);
 		despesas.setIsStatus(status);
 		repository.save(despesas);
+		return despesas();
+	}
+
+	@RequestMapping("/remover/{despesas}")
+	private ModelAndView removeDespesas(@PathVariable("despesas") Despesas despesas) {
+		despesas.setInquilino(null);
+		repository.delete(despesas);
 		return despesas();
 	}
 
@@ -110,7 +120,7 @@ public class DespesasController {
 	@RequestMapping("/imprimir/{id}")
 	private ModelAndView imprimirPdf(@PathVariable("id") Long id) throws Exception {
 		Despesas despesas = repository.findById(id);
-		if(!despesas.getIsStatus()){
+		if (!despesas.getIsStatus()) {
 			throw new Exception("Conta não esta Paga");
 		}
 		JasperReportsPdfView view = new JasperReportsPdfView();

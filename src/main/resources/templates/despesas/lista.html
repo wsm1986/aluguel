@@ -42,9 +42,9 @@
                                         <th>Conta</th>
                                         <th>Vencimento</th>
                                         <th>Valor</th>
-                                        <th>Status</th>
                                         <th>Alterar</th>
-                                        <th>Gerar Comprovante</th>
+                                        <th>Comprovante</th>
+                                        <th>Deletar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,10 +53,9 @@
 										<td th:text="${lista.conta}">1</td>
 										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MM/yyyy HH:mm')}">1</td>
 										<td th:text="${lista.valor}">1</td>
-										<td th:text="${lista.isStatus}">1</td>
-										<td >	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,false).arg(1,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
-										<td >	<a th:href="${(#mvc.url('DC#sendComprovante').arg(0,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
-										
+										<td >	<a th:href="${(#mvc.url('DC#updateStatus').arg(0,false).arg(1,lista.id)).build()}" class="fa  fa-thumbs-o-down fa-fw" ></a>  </td>
+										<td >	<a th:href="${(#mvc.url('DC#sendComprovante').arg(0,lista.id)).build()}" class="fa  fa-print fa-fw" ></a>  </td>
+										<td></td>
                                     </tr>
                                     
                                     <tr th:each="lista : ${listDespesas}" th:if="${!lista.isStatus}" class="danger">
@@ -64,9 +63,9 @@
 										<td th:text="${lista.conta}">1</td>
 										<td th:text="${#calendars.format(lista.dtVenciomento, 'dd/MM/yyyy HH:mm')}">1</td>
 										<td th:text="${lista.valor}">1</td>
-										<td th:text="${lista.isStatus}">1</td>
-        								<td>	<a th:href="${(#mvc.url('DC#getUpdateStatus').arg(0,true).arg(1,lista.id)).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>  </td>
+        								<td>	<a th:href="${(#mvc.url('DC#updateStatus').arg(0,true).arg(1,lista.id)).build()}" class="fa fa-thumbs-o-up fa-fw  " ></a>  </td>
         								<td></td>
+        								<td ><a th:href="${(#mvc.url('DC#removeDespesas').arg(0,lista)).build()}" class="fa  fa-eraser fa-fw" ></a>  </td>
         								
 										
                                     </tr>
