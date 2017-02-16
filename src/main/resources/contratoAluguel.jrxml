@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2400"/>
+	<property name="ireport.y" value="2171"/>
 	<parameter name="nome_inquilino" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
@@ -338,10 +338,9 @@ IMÓVEL PARA FINS RESIDENCIAIS]]></text>
 					<text><![CDATA[1 - O Quintal deverá ser lavado 1(uma) vez por mês no mínimo por cada inquilino.
 2 - Não é permitido som alto em nenhum momento do dia.
 3 - O lixo deverá ser colocado somente na frente da residência, nos dias que o lixeiro passar (TERÇA,QUINTA,SABADO) e somente no período noturno.
-4 - Não é permitido colocar varal nas paredes, pois a mesma já conte, caso precise de mais varal  é permitido varão de chão e o mesmo deverá ficar na frente da residência do mesmo.
+4 - Não é permitido colocar varal nas paredes, pois a mesma já contem, caso precise de mais varal  é permitido varal de chão e o mesmo deverá ficar na frente da residência do mesmo.
 
-Caso alguma das observações acima não seja cumprida o Locador poderá Solicitar a desocupação imediata do imóvel.
-]]></text>
+Caso alguma das observações acima não seja cumprida o Locador poderá Solicitar a desocupação imediata do imóvel.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Transparent" x="1" y="172" width="572" height="20" forecolor="#F02F2F" backcolor="#FFFFFF" uuid="04e61898-66a2-432b-916f-ad698ffd9ffa"/>
