@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoAluguel" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a6b738-9028-4bed-9cc1-dbf943a610e7">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="2400"/>
 	<parameter name="nome_inquilino" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/dbaldani/workspaceAluraSprinng/aluguel/src/main/resources/"]]></defaultValueExpression>
@@ -202,9 +202,9 @@ IMÓVEL PARA FINS RESIDENCIAIS]]></text>
 				<staticText>
 					<reportElement x="1" y="2" width="572" height="40" uuid="e05f9847-3833-420a-bec7-b5de794453f6"/>
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font size="10" isBold="true"/>
+						<font size="10" isBold="false"/>
 					</textElement>
-					<text><![CDATA[ Parágrafo único. Ocorrendo atraso no pagamento do aluguel, o LOCATÁRIO deverá pagar uma multa de (10)%, calculada sobre o valor do aluguel mais (1)% mora dia.]]></text>
+					<text><![CDATA[	Cláusula 5ª. Ocorrendo atraso no pagamento do aluguel, o LOCATÁRIO deverá pagar uma multa de (10)%, calculada sobre o valor do aluguel mais (1)% mora dia.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="1" y="42" width="572" height="54" uuid="06ef32c7-8ea4-4c99-bb77-dc617832a854"/>
@@ -351,12 +351,12 @@ Caso alguma das observações acima não seja cumprida o Locador poderá Solicit
 					<text><![CDATA[ATENÇÃO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="1" y="316" width="572" height="54" uuid="9a796da9-2482-43aa-a0b4-736ca3a91a47"/>
+					<reportElement x="1" y="312" width="572" height="66" uuid="9a796da9-2482-43aa-a0b4-736ca3a91a47"/>
 					<textElement textAlignment="Justified">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Parágrafo único.  RESCISÃO CONTRATUAL
-Fica estabelecida a multa equivalente a 02(três) meses de alugueres vigente a época da infração contratual cometida, pagamento este que deverá ser efetuado pela parte infratora, com a faculdade para a parte inocente de poder considerar rescindida simultaneamente a]]></text>
+Fica estabelecida a multa equivalente a 02(dois) meses de alugueis vigente a época da infração contratual cometida, pagamento este que deverá ser efetuado pela parte infratora, com a faculdade para a parte inocente de poder considerar rescindida simultaneamente alocação, independentemente de qualquer formalidade judicial ou extrajudicial sem prejuízo da exigibilidade da multa ora contratada.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="1" y="376" width="572" height="41" uuid="a92fc370-6aa7-4c2e-8998-849b87c268c1"/>
