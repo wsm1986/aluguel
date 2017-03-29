@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/inquilino/lista").hasRole("ADMIN")
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/despesas/imprimir/**").permitAll()
+				.antMatchers("/console/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -38,5 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		   http.csrf().disable();
+		   http.headers().frameOptions().disable();
 	}
 }

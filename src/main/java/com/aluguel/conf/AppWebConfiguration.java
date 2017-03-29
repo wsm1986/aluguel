@@ -4,8 +4,10 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.h2.server.web.WebServlet;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +32,14 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addRedirectViewController("/", "/inquilino/form");
+	}
+
+	@Bean
+	ServletRegistrationBean h2servletRegistration() {
+		ServletRegistrationBean registrationBean = new ServletRegistrationBean(
+				new WebServlet());
+		registrationBean.addUrlMappings("/console/*");
+		return registrationBean;
 	}
 
 	@Bean
@@ -60,7 +70,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		mailProperties.put("mail.smtp.starttls.enable", "true");
 		mailProperties.put("mail.smtp.socketFactory.port", "465");
 		mailProperties.put("mail.smtp.socketFactory.fallback", "false");
-		mailProperties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		mailProperties.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
 
 		mailSender.setJavaMailProperties(mailProperties);
 		return mailSender;
@@ -73,8 +84,9 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
-		return (container -> container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404"),
-				new ErrorPage(HttpStatus.FORBIDDEN, "/403")));
+		return (container -> container.addErrorPages(new ErrorPage(
+				HttpStatus.NOT_FOUND, "/404"), new ErrorPage(
+				HttpStatus.FORBIDDEN, "/403")));
 	}
 
 	@Bean
@@ -99,9 +111,11 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// @formatter:off
-		registry.addResourceHandler("/static/**").addResourceLocations("/resources/", "/webjars/")
-				.setCacheControl(CacheControl.maxAge(30L, TimeUnit.DAYS).cachePublic()).resourceChain(true)
-				.addResolver(new WebJarsResourceResolver());
+		registry.addResourceHandler("/static/**")
+				.addResourceLocations("/resources/", "/webjars/")
+				.setCacheControl(
+						CacheControl.maxAge(30L, TimeUnit.DAYS).cachePublic())
+				.resourceChain(true).addResolver(new WebJarsResourceResolver());
 		// @formatter:on
 	}
 }
