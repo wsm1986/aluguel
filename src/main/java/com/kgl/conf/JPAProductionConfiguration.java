@@ -1,4 +1,4 @@
-package com.aluguel.conf;
+package com.kgl.conf;
 
 import java.net.URI;
 import java.net.URISyntaxException;

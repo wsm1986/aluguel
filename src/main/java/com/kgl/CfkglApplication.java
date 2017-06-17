@@ -1,4 +1,4 @@
-package com.aluguel;
+package com.kgl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class AluguelApplication {
+public class CfkglApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AluguelApplication.class, args);
+		SpringApplication.run(CfkglApplication.class, args);
 	}
 }

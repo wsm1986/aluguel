@@ -1,4 +1,4 @@
-package  com.aluguel.models;
+package  com.kgl.models;
 
 
 /**

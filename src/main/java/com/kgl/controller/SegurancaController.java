@@ -1,4 +1,4 @@
-package com.aluguel.controller;
+package com.kgl.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;

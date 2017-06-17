@@ -1,4 +1,4 @@
-package com.aluguel.conf;
+package com.kgl.conf;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
