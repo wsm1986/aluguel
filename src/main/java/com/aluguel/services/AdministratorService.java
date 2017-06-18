@@ -1,4 +1,4 @@
-package com.kgl.services;
+package com.aluguel.services;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

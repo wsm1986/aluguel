@@ -1,4 +1,4 @@
-package com.kgl.conf;
+package com.aluguel.conf;
 
 import java.util.Locale;
 import java.util.Properties;

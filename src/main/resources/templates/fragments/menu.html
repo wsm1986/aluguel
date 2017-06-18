@@ -10,7 +10,7 @@
                   
                </div>
                <div class="navbar-text" style="margin-left: 0px">
-                  CONTROLE FINANCEIRO K.G.L
+                  CONTROLE ALUGUEL
                </div>
             </div>
             
@@ -51,38 +51,29 @@
                         <a href="#" th:href="@{/index}"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                      </li>
                      <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Corretor<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Inquilino<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                           <li><a href="#" th:href="@{/corretor/form}"  >Novo</a></li>
-                           <li><a href="#" th:href="@{/inquilino/lista}"   >Corretores</a></li>
+                           <li><a href="#" th:href="@{/inquilino/form}"  >Cadastro</a></li>
+                           <li><a href="#" th:href="@{/inquilino/lista}"   >Lista</a></li>
                         </ul>
                         
                      </li>
                      <li >
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Operadora<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Contas<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                         
-							 <li><a href="#" th:href="@{/contas/form}"  >Novo</a></li>
-							 <li><a href="#" th:href="@{/contas/form}"  >Operadoras</a></li>                          
+							 <li><a href="#" th:href="@{/contas/form}"  >Cadastro</a></li>                  
                         </ul>
                         
                      </li>
                      <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Produto<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Despesas<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                         <li><a href="#" th:href="@{/despesas/pesquisa}"  >Novo</a></li>
-                         <li><a href="#" th:href="@{/despesas/form}"  >Produtos</a></li>
+                         <li><a href="#" th:href="@{/despesas/pesquisa}"  >Listar</a></li>
+                         <li><a href="#" th:href="@{/despesas/form}"  >Novo</a></li>
                         </ul>
                         
                      </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Movimentações<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                         <li><a href="#" th:href="@{/despesas/pesquisa}"  >Contrato</a></li>
-                         <li><a href="#" th:href="@{/despesas/form}"  >Pagamento</a></li>
-                        </ul>
-                        
-                     </li>                     
                     
                   </ul>
                </div>

@@ -1,4 +1,4 @@
-package com.kgl.controller;
+package com.aluguel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ public class HomeController {
 	@Autowired
 	@RequestMapping({ "/", "/index", "/index.html" })
 	public ModelAndView index() {
-		return new ModelAndView("kgl");
+		return new ModelAndView("index");
 	}
 
 }
